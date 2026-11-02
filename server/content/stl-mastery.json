@@ -1,0 +1,1402 @@
+{
+  "title": "STL Mastery",
+  "instructor": "Alpha Coding School Team",
+  "level": "Basic → Advanced",
+  "price": 9,
+  "featured": false,
+  "description": "Master the C++ STL from containers and iterators to algorithms and custom comparators, with DSA problems in every lesson.",
+  "includes": [
+    "Videos",
+    "Notes",
+    "Logic",
+    "Live Classes",
+    "Practice"
+  ],
+  "lessons": [
+    {
+      "title": "001. What is STL",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/001.mp4",
+      "duration": 20,
+      "notes": "STL = Standard Template Library.\nFour parts: containers, iterators, algorithms, functors.\nContainers store data, algorithms work on data, iterators connect the two.\nHeader: #include <bits/stdc++.h> (practice) or specific headers.",
+      "logic": {
+        "problem": "Why use STL instead of writing my own structures?",
+        "thinking": "Tested, fast code saves contest and interview time.",
+        "pattern": "Containers + Iterators + Algorithms",
+        "logic": "Algorithms work on any container through iterators.",
+        "approach": "1. Pick the container.\n2. Use iterators to point at data.\n3. Call an algorithm.",
+        "code": "vector<int> v = {3, 1, 2};\nsort(v.begin(), v.end());"
+      },
+      "problems": [
+        {
+          "title": "Contains Duplicate",
+          "url": "https://leetcode.com/problems/contains-duplicate/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53657"
+    },
+    {
+      "title": "002. Templates and Generic Programming Basics",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/002.mp4",
+      "duration": 25,
+      "notes": "template<typename T> makes one function work for many types.\nThe compiler creates a version for each type you use.\nSTL containers are class templates: vector<int>, map<string, int>.\nTemplate errors are long; read the first line.",
+      "logic": {
+        "problem": "Write one swap that works for int, double and string.",
+        "thinking": "The logic is the same for every type.",
+        "pattern": "Generic programming",
+        "logic": "Replace the type with T.",
+        "approach": "1. Write the function with T.\n2. Call it with any type.\n3. Let the compiler deduce T.",
+        "code": "template <typename T>\nvoid mySwap(T& a, T& b) { T t = a; a = b; b = t; }"
+      },
+      "problems": [
+        {
+          "title": "Reverse String",
+          "url": "https://leetcode.com/problems/reverse-string/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53658"
+    },
+    {
+      "title": "003. Iterators",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/003.mp4",
+      "duration": 30,
+      "notes": "An iterator is a pointer-like handle to an element.\nbegin() = first element, end() = one past the last.\nTypes: input, output, forward, bidirectional, random access.\nUseful: advance, distance, next, prev, rbegin/rend.",
+      "logic": {
+        "problem": "Walk a container without caring whether it is a vector or a list.",
+        "thinking": "Iterators give one interface for every container.",
+        "pattern": "Iterator traversal",
+        "logic": "Move with ++, read with *.",
+        "approach": "1. it = c.begin().\n2. While it != c.end().\n3. Use *it, then ++it.",
+        "code": "for (auto it = v.begin(); it != v.end(); ++it) cout << *it << \" \";\nauto last = prev(v.end());"
+      },
+      "problems": [
+        {
+          "title": "Reverse String",
+          "url": "https://leetcode.com/problems/reverse-string/"
+        },
+        {
+          "title": "Valid Palindrome",
+          "url": "https://leetcode.com/problems/valid-palindrome/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53659"
+    },
+    {
+      "title": "004. STL Complexity Cheat Sheet",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/004.mp4",
+      "duration": 25,
+      "notes": "vector: access O(1), push_back O(1) amortised, insert/erase in the middle O(n).\ndeque: both ends O(1).\nlist: insert/erase O(1) with an iterator, no random access.\nset/map: O(log n). unordered_set/map: O(1) average, O(n) worst.\npriority_queue: push/pop O(log n), top O(1).\nsort O(n log n), binary_search O(log n).",
+      "logic": {
+        "problem": "Which container is fast enough for n = 1e5?",
+        "thinking": "Read the cost of each operation before choosing.",
+        "pattern": "Cost-based choice",
+        "logic": "Match the most frequent operation to a cheap container.",
+        "approach": "1. List your operations.\n2. Check the table.\n3. Choose the cheapest fit."
+      },
+      "problems": [
+        {
+          "title": "Contains Duplicate II",
+          "url": "https://leetcode.com/problems/contains-duplicate-ii/"
+        },
+        {
+          "title": "Two Sum",
+          "url": "https://leetcode.com/problems/two-sum/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5365a"
+    },
+    {
+      "title": "005. Modern C++ Tools for STL",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/005.mp4",
+      "duration": 25,
+      "notes": "auto deduces the type.\nRange-for: for (auto& x : v).\nStructured bindings: for (auto& [k, v] : m).\nLambdas: [](int a, int b){ return a < b; }.\nBrace init: vector<int> v = {1, 2, 3};",
+      "logic": {
+        "problem": "Loop over a map without writing iterators.",
+        "thinking": "Modern syntax removes boilerplate.",
+        "pattern": "Range-for + bindings",
+        "logic": "Use auto& to avoid copies.",
+        "approach": "1. for (auto& [k, v] : m).\n2. Use k and v directly.",
+        "code": "map<string,int> m = {{\"a\", 1}, {\"b\", 2}};\nfor (auto& [k, v] : m) cout << k << \" \" << v << \"\\n\";"
+      },
+      "problems": [
+        {
+          "title": "Running Sum of 1d Array",
+          "url": "https://leetcode.com/problems/running-sum-of-1d-array/"
+        },
+        {
+          "title": "Richest Customer Wealth",
+          "url": "https://leetcode.com/problems/richest-customer-wealth/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5365b"
+    },
+    {
+      "title": "006. vector Basics",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/006.mp4",
+      "duration": 30,
+      "notes": "vector<int> v; v(n), v(n, x), v = {1, 2, 3}.\npush_back, pop_back, size, empty, back, front, clear.\nIndex with v[i] or v.at(i) (checks bounds).\nPass big vectors by const reference.",
+      "logic": {
+        "problem": "Store input whose size is known only at run time.",
+        "thinking": "A dynamic array grows automatically.",
+        "pattern": "Dynamic array",
+        "logic": "Use vector as the default array.",
+        "approach": "1. Read n.\n2. vector<int> v(n).\n3. Fill and use.",
+        "code": "int n; cin >> n;\nvector<int> v(n);\nfor (int& x : v) cin >> x;"
+      },
+      "problems": [
+        {
+          "title": "Concatenation of Array",
+          "url": "https://leetcode.com/problems/concatenation-of-array/"
+        },
+        {
+          "title": "Shuffle the Array",
+          "url": "https://leetcode.com/problems/shuffle-the-array/"
+        },
+        {
+          "title": "Remove Element",
+          "url": "https://leetcode.com/problems/remove-element/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5365c"
+    },
+    {
+      "title": "007. vector Advanced",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/007.mp4",
+      "duration": 35,
+      "notes": "capacity vs size; reserve(n) avoids reallocations.\nemplace_back builds in place.\ninsert(pos, x), erase(pos), erase(first, last).\n2D: vector<vector<int>> g(r, vector<int>(c, 0)).\nassign, resize, swap, shrink_to_fit.",
+      "logic": {
+        "problem": "Create a grid with r rows and c columns filled with 0.",
+        "thinking": "Each row is its own vector.",
+        "pattern": "Vector of vectors",
+        "logic": "Create rows with a fill value.",
+        "approach": "1. g(r, vector<int>(c, 0)).\n2. Access g[i][j].",
+        "code": "vector<vector<int>> g(r, vector<int>(c, 0));\nv.reserve(100000);\nv.insert(v.begin() + 2, 99);\nv.erase(v.begin());"
+      },
+      "problems": [
+        {
+          "title": "Merge Sorted Array",
+          "url": "https://leetcode.com/problems/merge-sorted-array/"
+        },
+        {
+          "title": "Remove Duplicates from Sorted Array",
+          "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/"
+        },
+        {
+          "title": "Pascal's Triangle",
+          "url": "https://leetcode.com/problems/pascals-triangle/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5365d"
+    },
+    {
+      "title": "008. array and C-style Arrays",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/008.mp4",
+      "duration": 20,
+      "notes": "array<int, 5> a: fixed size, on the stack, knows its size().\nSupports begin(), end(), fill, and works with algorithms.\nGlobal C arrays start at 0; locals do not.\nUse vector when the size is not known at compile time.",
+      "logic": {
+        "problem": "Store 26 letter counts with fixed size.",
+        "thinking": "The size never changes.",
+        "pattern": "Fixed-size container",
+        "logic": "Use array when the size is a compile-time constant.",
+        "approach": "1. array<int, 26> cnt{}.\n2. cnt[c - 'a']++.",
+        "code": "array<int, 26> cnt{};\nfor (char c : s) cnt[c - 'a']++;"
+      },
+      "problems": [
+        {
+          "title": "Transpose Matrix",
+          "url": "https://leetcode.com/problems/transpose-matrix/"
+        },
+        {
+          "title": "Flipping An Image",
+          "url": "https://leetcode.com/problems/flipping-an-image/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5365e"
+    },
+    {
+      "title": "009. string Methods",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/009.mp4",
+      "duration": 30,
+      "notes": "size, empty, push_back, pop_back, substr(pos, len), find, rfind, erase, insert, replace.\ns.find returns string::npos when not found.\nCompare with ==, <, >; concatenate with +.\nSort letters: sort(s.begin(), s.end()).",
+      "logic": {
+        "problem": "Check if a word contains a pattern.",
+        "thinking": "find tells where, npos tells not found.",
+        "pattern": "String search",
+        "logic": "Compare the result with npos.",
+        "approach": "1. pos = s.find(p).\n2. If pos != npos, found at pos.",
+        "code": "size_t pos = s.find(\"abc\");\nif (pos != string::npos) cout << pos;\nstring t = s.substr(2, 3);"
+      },
+      "problems": [
+        {
+          "title": "Reverse Words in a String",
+          "url": "https://leetcode.com/problems/reverse-words-in-a-string/"
+        },
+        {
+          "title": "Longest Common Prefix",
+          "url": "https://leetcode.com/problems/longest-common-prefix/"
+        },
+        {
+          "title": "Valid Palindrome",
+          "url": "https://leetcode.com/problems/valid-palindrome/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5365f"
+    },
+    {
+      "title": "010. String Utilities",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/010.mp4",
+      "duration": 30,
+      "notes": "stoi, stoll, stod: string to number. to_string: number to string.\nstringstream splits and parses text.\ngetline(cin, s) reads a line; getline(ss, tok, ',') splits by a character.\nstring_view is a light read-only view (C++17).",
+      "logic": {
+        "problem": "Split \"1.2.3\" into numbers.",
+        "thinking": "A stream can read pieces separated by a delimiter.",
+        "pattern": "stringstream splitting",
+        "logic": "getline with a delimiter.",
+        "approach": "1. stringstream ss(s).\n2. while getline(ss, tok, '.').\n3. stoi(tok).",
+        "code": "stringstream ss(s); string tok; vector<int> parts;\nwhile (getline(ss, tok, '.')) parts.push_back(stoi(tok));"
+      },
+      "problems": [
+        {
+          "title": "String to Integer (atoi)",
+          "url": "https://leetcode.com/problems/string-to-integer-atoi/"
+        },
+        {
+          "title": "Add Strings",
+          "url": "https://leetcode.com/problems/add-strings/"
+        },
+        {
+          "title": "Compare Version Numbers",
+          "url": "https://leetcode.com/problems/compare-version-numbers/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53660"
+    },
+    {
+      "title": "011. deque",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/011.mp4",
+      "duration": 25,
+      "notes": "Double-ended queue: push_front, push_back, pop_front, pop_back all O(1).\nRandom access v[i] works, O(1).\nInsert in the middle is O(n).\nUsed for sliding window maximum and 0-1 BFS.",
+      "logic": {
+        "problem": "Maximum of every window of size k.",
+        "thinking": "Smaller items before a bigger one can never be the answer.",
+        "pattern": "Monotonic deque",
+        "logic": "Keep indexes with decreasing values.",
+        "approach": "1. Pop back while smaller.\n2. Push the index.\n3. Pop front if out of the window.",
+        "code": "deque<int> dq;\nfor (int i = 0; i < n; i++) {\n  while (!dq.empty() && a[dq.back()] <= a[i]) dq.pop_back();\n  dq.push_back(i);\n  if (dq.front() <= i - k) dq.pop_front();\n  if (i >= k - 1) res.push_back(a[dq.front()]);\n}"
+      },
+      "problems": [
+        {
+          "title": "Design Circular Deque",
+          "url": "https://leetcode.com/problems/design-circular-deque/"
+        },
+        {
+          "title": "Sliding Window Maximum",
+          "url": "https://leetcode.com/problems/sliding-window-maximum/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53661"
+    },
+    {
+      "title": "012. list and forward_list",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/012.mp4",
+      "duration": 25,
+      "notes": "list: doubly linked, insert/erase O(1) with an iterator.\nNo v[i]; use iterators.\nsplice moves nodes without copying; sort() and unique() are members.\nforward_list is singly linked and uses less memory.",
+      "logic": {
+        "problem": "Move an item to the front in O(1).",
+        "thinking": "A vector would shift every element.",
+        "pattern": "List + iterator",
+        "logic": "Splice a node to the front.",
+        "approach": "1. Keep a map key → list iterator.\n2. On use: l.splice(l.begin(), l, it).\n3. On overflow: l.pop_back().",
+        "code": "list<int> l = {1, 2, 3};\nauto it = next(l.begin());\nl.splice(l.begin(), l, it);"
+      },
+      "problems": [
+        {
+          "title": "LRU Cache",
+          "url": "https://leetcode.com/problems/lru-cache/"
+        },
+        {
+          "title": "Design Browser History",
+          "url": "https://leetcode.com/problems/design-browser-history/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53662"
+    },
+    {
+      "title": "013. pair and tuple",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/013.mp4",
+      "duration": 25,
+      "notes": "pair<int,int> p = {a, b}; p.first, p.second; make_pair.\nPairs compare by first, then second.\ntuple<int,int,int> t; get<0>(t); tie(a, b, c) = t.\nStructured bindings: auto [x, y] = p.",
+      "logic": {
+        "problem": "Sort items by one value and keep the label.",
+        "thinking": "Pairs sort by the first element.",
+        "pattern": "Pair as a record",
+        "logic": "Put the sort key first.",
+        "approach": "1. Make pair(key, label).\n2. sort.\n3. Read the pairs.",
+        "code": "vector<pair<int,string>> v = {{3, \"c\"}, {1, \"a\"}};\nsort(v.begin(), v.end());\nauto [d, name] = v[0];"
+      },
+      "problems": [
+        {
+          "title": "Sort the People",
+          "url": "https://leetcode.com/problems/sort-the-people/"
+        },
+        {
+          "title": "K Closest Points to Origin",
+          "url": "https://leetcode.com/problems/k-closest-points-to-origin/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53663"
+    },
+    {
+      "title": "014. bitset",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/014.mp4",
+      "duration": 20,
+      "notes": "bitset<N> b: fixed-size array of bits.\nset, reset, flip, test, count, any, none, to_string.\nOperators & | ^ ~ << >> work on whole bitsets.\nGreat for sieve and subset flags.",
+      "logic": {
+        "problem": "Mark primes up to n with little memory.",
+        "thinking": "One bit per number is enough.",
+        "pattern": "Bitset sieve",
+        "logic": "Cross out multiples.",
+        "approach": "1. Set all bits.\n2. For each prime, reset its multiples.\n3. Count the set bits.",
+        "code": "bitset<1000001> p; p.set(); p[0] = p[1] = 0;\nfor (long long i = 2; i * i <= n; i++) if (p[i])\n  for (long long j = i * i; j <= n; j += i) p[j] = 0;"
+      },
+      "problems": [
+        {
+          "title": "Number of 1 Bits",
+          "url": "https://leetcode.com/problems/number-of-1-bits/"
+        },
+        {
+          "title": "Counting Bits",
+          "url": "https://leetcode.com/problems/counting-bits/"
+        },
+        {
+          "title": "Count Primes",
+          "url": "https://leetcode.com/problems/count-primes/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53664"
+    },
+    {
+      "title": "015. stack",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/015.mp4",
+      "duration": 25,
+      "notes": "push, pop, top, size, empty. LIFO, all O(1).\npop() returns nothing; read top() first.\nCheck empty() before top().\nMonotonic stack: next greater element.",
+      "logic": {
+        "problem": "Days until a warmer temperature.",
+        "thinking": "Compare each day with unresolved earlier days.",
+        "pattern": "Monotonic stack",
+        "logic": "Pop days that just found their answer.",
+        "approach": "1. Stack of indexes.\n2. While today > top, pop and fill the answer.\n3. Push today.",
+        "code": "stack<int> st;\nfor (int i = 0; i < n; i++) {\n  while (!st.empty() && t[i] > t[st.top()]) { res[st.top()] = i - st.top(); st.pop(); }\n  st.push(i);\n}"
+      },
+      "problems": [
+        {
+          "title": "Valid Parentheses",
+          "url": "https://leetcode.com/problems/valid-parentheses/"
+        },
+        {
+          "title": "Daily Temperatures",
+          "url": "https://leetcode.com/problems/daily-temperatures/"
+        },
+        {
+          "title": "Min Stack",
+          "url": "https://leetcode.com/problems/min-stack/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53665"
+    },
+    {
+      "title": "016. queue",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/016.mp4",
+      "duration": 25,
+      "notes": "push, pop, front, back, size, empty. FIFO, all O(1).\npop() returns nothing; read front() first.\nBFS is built on a queue.\nQueue of pairs for (node, distance).",
+      "logic": {
+        "problem": "Rot all oranges and count minutes.",
+        "thinking": "All rotten oranges spread at the same time.",
+        "pattern": "Multi-source BFS",
+        "logic": "Push all sources first.",
+        "approach": "1. Push every rotten orange.\n2. Process level by level.\n3. Count levels.",
+        "code": "queue<pair<int,int>> q;\nwhile (!q.empty()) {\n  auto [r, c] = q.front(); q.pop();\n  // visit the four neighbours and push them\n}"
+      },
+      "problems": [
+        {
+          "title": "Number of Recent Calls",
+          "url": "https://leetcode.com/problems/number-of-recent-calls/"
+        },
+        {
+          "title": "Implement Stack Using Queues",
+          "url": "https://leetcode.com/problems/implement-stack-using-queues/"
+        },
+        {
+          "title": "Rotting Oranges",
+          "url": "https://leetcode.com/problems/rotting-oranges/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53666"
+    },
+    {
+      "title": "017. priority_queue",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/017.mp4",
+      "duration": 30,
+      "notes": "Max-heap by default; min-heap: priority_queue<int, vector<int>, greater<int>>.\npush, pop O(log n), top O(1).\nPairs compare by first, then second.\nCustom order: a struct with operator(), or a lambda.\nNo iteration, no update of an element.",
+      "logic": {
+        "problem": "Find the k largest elements.",
+        "thinking": "You only need k items, not a full order.",
+        "pattern": "Bounded min-heap",
+        "logic": "Keep the k best; pop the smallest.",
+        "approach": "1. Push each item.\n2. If size > k, pop.\n3. The heap holds the answer.",
+        "code": "priority_queue<int, vector<int>, greater<int>> pq;\nfor (int x : a) { pq.push(x); if ((int)pq.size() > k) pq.pop(); }"
+      },
+      "problems": [
+        {
+          "title": "Kth Largest Element in An Array",
+          "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/"
+        },
+        {
+          "title": "Last Stone Weight",
+          "url": "https://leetcode.com/problems/last-stone-weight/"
+        },
+        {
+          "title": "Top K Frequent Elements",
+          "url": "https://leetcode.com/problems/top-k-frequent-elements/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53667"
+    },
+    {
+      "title": "018. set",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/018.mp4",
+      "duration": 30,
+      "notes": "Sorted, unique elements; insert, erase, find, count in O(log n).\nbegin() is the minimum, prev(end()) is the maximum.\nlower_bound(x) = first element ≥ x; upper_bound(x) = first element > x.\nIterate in sorted order.",
+      "logic": {
+        "problem": "Find the next larger value that was inserted before.",
+        "thinking": "A sorted set answers neighbour questions fast.",
+        "pattern": "Ordered set",
+        "logic": "lower_bound jumps to the neighbour.",
+        "approach": "1. Insert values.\n2. auto it = s.lower_bound(x).\n3. Check it and prev(it).",
+        "code": "set<int> s = {5, 1, 9};\nauto it = s.lower_bound(6);\nif (it != s.end()) cout << *it;"
+      },
+      "problems": [
+        {
+          "title": "Intersection of Two Arrays",
+          "url": "https://leetcode.com/problems/intersection-of-two-arrays/"
+        },
+        {
+          "title": "Longest Consecutive Sequence",
+          "url": "https://leetcode.com/problems/longest-consecutive-sequence/"
+        },
+        {
+          "title": "Contains Duplicate III",
+          "url": "https://leetcode.com/problems/contains-duplicate-iii/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53668"
+    },
+    {
+      "title": "019. multiset",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/019.mp4",
+      "duration": 25,
+      "notes": "Sorted, duplicates allowed.\nerase(value) removes all copies; erase(iterator) removes one.\ncount(x), find(x), lower_bound, upper_bound.\nGreat for sliding-window median and order statistics.",
+      "logic": {
+        "problem": "Remove one copy of a value.",
+        "thinking": "erase(value) deletes every copy.",
+        "pattern": "Erase by iterator",
+        "logic": "Use find, then erase the iterator.",
+        "approach": "1. auto it = ms.find(x).\n2. If it != end, ms.erase(it).",
+        "code": "multiset<int> ms = {2, 2, 3};\nms.erase(ms.find(2));"
+      },
+      "problems": [
+        {
+          "title": "Sliding Window Median",
+          "url": "https://leetcode.com/problems/sliding-window-median/"
+        },
+        {
+          "title": "Find Median from Data Stream",
+          "url": "https://leetcode.com/problems/find-median-from-data-stream/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53669"
+    },
+    {
+      "title": "020. map",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/020.mp4",
+      "duration": 30,
+      "notes": "Sorted by key; O(log n) operations.\nm[key] creates the key with a default value.\nfind(key), count(key), erase(key), at(key).\nIterate with for (auto& [k, v] : m).\nlower_bound on keys works like set.",
+      "logic": {
+        "problem": "Group words that are anagrams.",
+        "thinking": "Anagrams share the same sorted letters.",
+        "pattern": "Map with a canonical key",
+        "logic": "Use the sorted word as the key.",
+        "approach": "1. key = sorted(word).\n2. m[key].push_back(word).\n3. Output all groups.",
+        "code": "map<string, vector<string>> m;\nfor (auto& w : words) { string k = w; sort(k.begin(), k.end()); m[k].push_back(w); }"
+      },
+      "problems": [
+        {
+          "title": "Group Anagrams",
+          "url": "https://leetcode.com/problems/group-anagrams/"
+        },
+        {
+          "title": "Word Pattern",
+          "url": "https://leetcode.com/problems/word-pattern/"
+        },
+        {
+          "title": "Top K Frequent Words",
+          "url": "https://leetcode.com/problems/top-k-frequent-words/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5366a"
+    },
+    {
+      "title": "021. multimap",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/021.mp4",
+      "duration": 20,
+      "notes": "Sorted map with duplicate keys.\nNo operator[]; use insert and equal_range.\nequal_range(key) gives all values for a key.\nOften replaced by map<key, vector<value>>.",
+      "logic": {
+        "problem": "Store several values under one key in sorted order.",
+        "thinking": "A key can repeat.",
+        "pattern": "Multi-value map",
+        "logic": "Use equal_range to read them.",
+        "approach": "1. mm.insert({k, v}).\n2. auto [a, b] = mm.equal_range(k).\n3. Loop a to b.",
+        "code": "multimap<int,string> mm;\nmm.insert({1, \"a\"}); mm.insert({1, \"b\"});\nauto [a, b] = mm.equal_range(1);"
+      },
+      "problems": [
+        {
+          "title": "Sort Characters By Frequency",
+          "url": "https://leetcode.com/problems/sort-characters-by-frequency/"
+        },
+        {
+          "title": "Reorganize String",
+          "url": "https://leetcode.com/problems/reorganize-string/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5366b"
+    },
+    {
+      "title": "022. unordered_set",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/022.mp4",
+      "duration": 25,
+      "notes": "Hash set: insert, erase, find, count in O(1) average.\nNo order.\nreserve(n) avoids rehashing.\nWorst case O(n) with many collisions.",
+      "logic": {
+        "problem": "Detect a repeated value fast.",
+        "thinking": "You only need membership, not order.",
+        "pattern": "Hash set",
+        "logic": "Insert and check in one step.",
+        "approach": "1. Insert each value.\n2. If insert fails, it was seen.\n3. Stop or count.",
+        "code": "unordered_set<int> seen;\nif (!seen.insert(x).second) cout << \"duplicate\";"
+      },
+      "problems": [
+        {
+          "title": "Happy Number",
+          "url": "https://leetcode.com/problems/happy-number/"
+        },
+        {
+          "title": "First Missing Positive",
+          "url": "https://leetcode.com/problems/first-missing-positive/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5366c"
+    },
+    {
+      "title": "023. unordered_map and Hashing",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/023.mp4",
+      "duration": 35,
+      "notes": "Hash map: O(1) average.\nm[x]++ is the standard frequency counter.\nUse find to read without creating keys.\nAnti-hash tests can slow it in contests; add a custom hash or use map.\nreserve and max_load_factor help speed.",
+      "logic": {
+        "problem": "Count subarrays with sum k.",
+        "thinking": "pre[j] - pre[i] = k means the subarray sums to k.",
+        "pattern": "Prefix sum + hash map",
+        "logic": "Look up pre - k among earlier prefixes.",
+        "approach": "1. m[0] = 1.\n2. pre += x.\n3. ans += m[pre - k]; m[pre]++.",
+        "code": "unordered_map<long long,int> m; m[0] = 1;\nlong long pre = 0; int ans = 0;\nfor (int x : a) { pre += x; ans += m[pre - k]; m[pre]++; }"
+      },
+      "problems": [
+        {
+          "title": "Continuous Subarray Sum",
+          "url": "https://leetcode.com/problems/continuous-subarray-sum/"
+        },
+        {
+          "title": "Isomorphic Strings",
+          "url": "https://leetcode.com/problems/isomorphic-strings/"
+        },
+        {
+          "title": "Subarray Sum Equals K",
+          "url": "https://leetcode.com/problems/subarray-sum-equals-k/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5366d"
+    },
+    {
+      "title": "024. Ordered Containers: Bounds and Tricks",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/024.mp4",
+      "duration": 35,
+      "notes": "lower_bound(x): first ≥ x. upper_bound(x): first > x.\nPredecessor: step back from lower_bound. Successor: upper_bound.\nErase while iterating: it = s.erase(it).\nset.count in a loop is O(log n) each; store the result.",
+      "logic": {
+        "problem": "Find the closest value to x in a set.",
+        "thinking": "The neighbours of x are the two items around lower_bound.",
+        "pattern": "Predecessor and successor",
+        "logic": "Check lower_bound and the one before it.",
+        "approach": "1. it = s.lower_bound(x).\n2. Candidate 1: *it.\n3. Candidate 2: *prev(it).",
+        "code": "auto it = s.lower_bound(x);\nif (it != s.end()) best = min(best, abs(*it - x));\nif (it != s.begin()) best = min(best, abs(*prev(it) - x));"
+      },
+      "problems": [
+        {
+          "title": "Contains Duplicate III",
+          "url": "https://leetcode.com/problems/contains-duplicate-iii/"
+        },
+        {
+          "title": "My Calendar I",
+          "url": "https://leetcode.com/problems/my-calendar-i/"
+        },
+        {
+          "title": "Count of Smaller Numbers After Self",
+          "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5366e"
+    },
+    {
+      "title": "025. sort and Custom Comparators",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/025.mp4",
+      "duration": 35,
+      "notes": "sort(first, last) is O(n log n), not stable.\nDescending: sort(v.rbegin(), v.rend()) or greater<int>().\nA comparator must be a strict weak ordering: return a < b, never a <= b.\nSort by several keys: compare the first, then break ties.",
+      "logic": {
+        "problem": "Sort intervals by start, then by end.",
+        "thinking": "A comparator tells which item comes first.",
+        "pattern": "Custom comparator",
+        "logic": "Return true when a must come before b.",
+        "approach": "1. Write a lambda.\n2. Compare the main key.\n3. Break ties with the next key.",
+        "code": "sort(v.begin(), v.end(), [](auto& a, auto& b) {\n  if (a[0] != b[0]) return a[0] < b[0];\n  return a[1] < b[1];\n});"
+      },
+      "problems": [
+        {
+          "title": "Largest Number",
+          "url": "https://leetcode.com/problems/largest-number/"
+        },
+        {
+          "title": "Merge Intervals",
+          "url": "https://leetcode.com/problems/merge-intervals/"
+        },
+        {
+          "title": "Reorder Data in Log Files",
+          "url": "https://leetcode.com/problems/reorder-data-in-log-files/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5366f"
+    },
+    {
+      "title": "026. stable_sort, partial_sort and nth_element",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/026.mp4",
+      "duration": 30,
+      "notes": "stable_sort keeps the order of equal items.\npartial_sort(first, mid, last) sorts only the smallest k.\nnth_element puts the k-th item in place in O(n) average.\nis_sorted checks order.",
+      "logic": {
+        "problem": "Find the median without a full sort.",
+        "thinking": "Only one position needs to be correct.",
+        "pattern": "Selection",
+        "logic": "nth_element partitions around position k.",
+        "approach": "1. k = n / 2.\n2. nth_element(begin, begin + k, end).\n3. Read a[k].",
+        "code": "nth_element(a.begin(), a.begin() + k, a.end());\nint kth = a[k];"
+      },
+      "problems": [
+        {
+          "title": "Kth Largest Element in An Array",
+          "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/"
+        },
+        {
+          "title": "Wiggle Sort II",
+          "url": "https://leetcode.com/problems/wiggle-sort-ii/"
+        },
+        {
+          "title": "Sort Colors",
+          "url": "https://leetcode.com/problems/sort-colors/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53670"
+    },
+    {
+      "title": "027. binary_search, lower_bound, upper_bound",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/027.mp4",
+      "duration": 30,
+      "notes": "These work on sorted ranges in O(log n).\nbinary_search returns true or false.\nlower_bound = first ≥ x. upper_bound = first > x.\nCount of x = upper_bound - lower_bound. equal_range gives both.\nIndex = it - v.begin().",
+      "logic": {
+        "problem": "Find the first and last position of x.",
+        "thinking": "First position = lower_bound; end = upper_bound.",
+        "pattern": "Bounds",
+        "logic": "Use the two iterators as the range.",
+        "approach": "1. lo = lower_bound(x).\n2. hi = upper_bound(x).\n3. If lo == hi, x is missing.",
+        "code": "auto lo = lower_bound(v.begin(), v.end(), x);\nauto hi = upper_bound(v.begin(), v.end(), x);\nint cnt = hi - lo;"
+      },
+      "problems": [
+        {
+          "title": "Search Insert Position",
+          "url": "https://leetcode.com/problems/search-insert-position/"
+        },
+        {
+          "title": "Find First and Last Position of Element in Sorted Array",
+          "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/"
+        },
+        {
+          "title": "Longest Increasing Subsequence",
+          "url": "https://leetcode.com/problems/longest-increasing-subsequence/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53671"
+    },
+    {
+      "title": "028. reverse, rotate, swap, fill and iota",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/028.mp4",
+      "duration": 25,
+      "notes": "reverse(first, last) reverses a range.\nrotate(first, mid, last) makes mid the new first.\nswap(a, b), fill(first, last, x), iota(first, last, start) fills 0, 1, 2…\nAll of these work on any container with iterators.",
+      "logic": {
+        "problem": "Rotate an array right by k.",
+        "thinking": "Rotation is a move of the middle pointer.",
+        "pattern": "rotate",
+        "logic": "Rotate left by n - k equals rotate right by k.",
+        "approach": "1. k %= n.\n2. rotate(begin, begin + n - k, end).",
+        "code": "k %= n;\nrotate(a.begin(), a.begin() + n - k, a.end());\nvector<int> id(n); iota(id.begin(), id.end(), 0);"
+      },
+      "problems": [
+        {
+          "title": "Rotate Array",
+          "url": "https://leetcode.com/problems/rotate-array/"
+        },
+        {
+          "title": "Rotate Image",
+          "url": "https://leetcode.com/problems/rotate-image/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53672"
+    },
+    {
+      "title": "029. min, max, minmax and Element Finders",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/029.mp4",
+      "duration": 25,
+      "notes": "min(a, b), max(a, b), minmax(a, b), clamp(x, lo, hi).\nmin({a, b, c}) takes an initializer list.\nmin_element and max_element return iterators.\nIndex: it - v.begin().",
+      "logic": {
+        "problem": "Where is the maximum element?",
+        "thinking": "The algorithm returns an iterator, not a value.",
+        "pattern": "Iterator results",
+        "logic": "Convert it to an index.",
+        "approach": "1. auto it = max_element(begin, end).\n2. value = *it.\n3. index = it - begin.",
+        "code": "auto it = max_element(v.begin(), v.end());\nint value = *it, idx = it - v.begin();"
+      },
+      "problems": [
+        {
+          "title": "Maximum Product of Three Numbers",
+          "url": "https://leetcode.com/problems/maximum-product-of-three-numbers/"
+        },
+        {
+          "title": "Best Time to Buy and Sell Stock",
+          "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
+        },
+        {
+          "title": "Find Minimum in Rotated Sorted Array",
+          "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53673"
+    },
+    {
+      "title": "030. accumulate, partial_sum, adjacent_difference",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/030.mp4",
+      "duration": 30,
+      "notes": "accumulate(first, last, init) sums a range. Use 0LL for long long.\npartial_sum builds a prefix-sum array.\nadjacent_difference is the opposite: differences of neighbours.\nPass a function as a fourth argument for a custom operation.",
+      "logic": {
+        "problem": "Build the prefix sums in one call.",
+        "thinking": "Prefix sums are a running total.",
+        "pattern": "Prefix sum",
+        "logic": "partial_sum writes the running total.",
+        "approach": "1. vector<long long> p(n).\n2. partial_sum(a.begin(), a.end(), p.begin()).\n3. Sum(l, r) = p[r] - p[l-1].",
+        "code": "long long total = accumulate(a.begin(), a.end(), 0LL);\nvector<long long> p(n);\npartial_sum(a.begin(), a.end(), p.begin());"
+      },
+      "problems": [
+        {
+          "title": "Range Sum Query Immutable",
+          "url": "https://leetcode.com/problems/range-sum-query-immutable/"
+        },
+        {
+          "title": "Find Pivot Index",
+          "url": "https://leetcode.com/problems/find-pivot-index/"
+        },
+        {
+          "title": "Subarray Sum Equals K",
+          "url": "https://leetcode.com/problems/subarray-sum-equals-k/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53674"
+    },
+    {
+      "title": "031. count, find and Predicates",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/031.mp4",
+      "duration": 25,
+      "notes": "count(first, last, x), count_if(first, last, pred).\nfind(first, last, x) and find_if return an iterator or end().\nany_of, all_of, none_of return bool.\nUse a lambda as the predicate.",
+      "logic": {
+        "problem": "Is every element positive?",
+        "thinking": "all_of checks the condition for every item.",
+        "pattern": "Predicate algorithms",
+        "logic": "Write the condition as a lambda.",
+        "approach": "1. pred = [](int x){ return x > 0; }.\n2. all_of(begin, end, pred).",
+        "code": "bool ok = all_of(v.begin(), v.end(), [](int x) { return x > 0; });\nint evens = count_if(v.begin(), v.end(), [](int x) { return x % 2 == 0; });"
+      },
+      "problems": [
+        {
+          "title": "Majority Element",
+          "url": "https://leetcode.com/problems/majority-element/"
+        },
+        {
+          "title": "Find All Numbers Disappeared in An Array",
+          "url": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/"
+        },
+        {
+          "title": "Valid Sudoku",
+          "url": "https://leetcode.com/problems/valid-sudoku/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53675"
+    },
+    {
+      "title": "032. unique, remove and the Erase-Remove Idiom",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/032.mp4",
+      "duration": 30,
+      "notes": "unique removes consecutive duplicates; sort first.\nremove and remove_if move kept items forward and return the new end.\nThey do not shrink the vector; call erase.\nErase-remove: v.erase(remove(v.begin(), v.end(), x), v.end()).\nC++20: erase(v, x) and erase_if.",
+      "logic": {
+        "problem": "Delete all copies of x from a vector.",
+        "thinking": "remove only moves items; erase cuts the tail.",
+        "pattern": "Erase-remove",
+        "logic": "Remove first, then erase the tail.",
+        "approach": "1. it = remove(begin, end, x).\n2. v.erase(it, v.end()).",
+        "code": "sort(v.begin(), v.end());\nv.erase(unique(v.begin(), v.end()), v.end());\nv.erase(remove(v.begin(), v.end(), 0), v.end());"
+      },
+      "problems": [
+        {
+          "title": "Remove Duplicates from Sorted Array",
+          "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/"
+        },
+        {
+          "title": "Remove Element",
+          "url": "https://leetcode.com/problems/remove-element/"
+        },
+        {
+          "title": "Move Zeroes",
+          "url": "https://leetcode.com/problems/move-zeroes/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53676"
+    },
+    {
+      "title": "033. next_permutation and prev_permutation",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/033.mp4",
+      "duration": 25,
+      "notes": "next_permutation rearranges to the next larger order and returns false at the end.\nStart from a sorted range to visit all permutations.\nDuplicates are handled: each distinct order appears once.\nprev_permutation goes the other way.",
+      "logic": {
+        "problem": "List all permutations of an array.",
+        "thinking": "A sorted start, then step through.",
+        "pattern": "Permutation loop",
+        "logic": "do-while with next_permutation.",
+        "approach": "1. sort(a).\n2. do { use a } while (next_permutation(a)).",
+        "code": "sort(a.begin(), a.end());\ndo { res.push_back(a); } while (next_permutation(a.begin(), a.end()));"
+      },
+      "problems": [
+        {
+          "title": "Next Permutation",
+          "url": "https://leetcode.com/problems/next-permutation/"
+        },
+        {
+          "title": "Permutations",
+          "url": "https://leetcode.com/problems/permutations/"
+        },
+        {
+          "title": "Permutation in String",
+          "url": "https://leetcode.com/problems/permutation-in-string/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53677"
+    },
+    {
+      "title": "034. merge and Set Algorithms",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/034.mp4",
+      "duration": 30,
+      "notes": "merge combines two sorted ranges into a third.\nset_union, set_intersection, set_difference, set_symmetric_difference need sorted input.\nincludes checks whether one sorted range contains another.\nResults go to an output iterator: back_inserter(res).",
+      "logic": {
+        "problem": "Intersection of two sorted arrays.",
+        "thinking": "Both ranges are sorted, so the algorithm can scan once.",
+        "pattern": "Set algorithms",
+        "logic": "Write results with back_inserter.",
+        "approach": "1. Sort both.\n2. set_intersection(..., back_inserter(res)).",
+        "code": "vector<int> res;\nset_intersection(a.begin(), a.end(), b.begin(), b.end(), back_inserter(res));"
+      },
+      "problems": [
+        {
+          "title": "Merge Sorted Array",
+          "url": "https://leetcode.com/problems/merge-sorted-array/"
+        },
+        {
+          "title": "Intersection of Two Arrays",
+          "url": "https://leetcode.com/problems/intersection-of-two-arrays/"
+        },
+        {
+          "title": "Merge Two Sorted Lists",
+          "url": "https://leetcode.com/problems/merge-two-sorted-lists/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53678"
+    },
+    {
+      "title": "035. Heap Algorithms",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/035.mp4",
+      "duration": 25,
+      "notes": "make_heap, push_heap, pop_heap, sort_heap work on a plain vector.\nMax-heap by default; pass greater<> for a min-heap.\npush_heap after push_back; pop_heap then pop_back.\nHandy when you need to see all elements of the heap.",
+      "logic": {
+        "problem": "Use a heap stored in a vector.",
+        "thinking": "You can inspect and change the vector between operations.",
+        "pattern": "Heap on a vector",
+        "logic": "Keep the heap property with the helper calls.",
+        "approach": "1. make_heap(v).\n2. Push: push_back, push_heap.\n3. Pop: pop_heap, pop_back.",
+        "code": "make_heap(v.begin(), v.end());\nv.push_back(7); push_heap(v.begin(), v.end());\npop_heap(v.begin(), v.end()); v.pop_back();"
+      },
+      "problems": [
+        {
+          "title": "Kth Largest Element in a Stream",
+          "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/"
+        },
+        {
+          "title": "Merge K Sorted Lists",
+          "url": "https://leetcode.com/problems/merge-k-sorted-lists/"
+        },
+        {
+          "title": "Ugly Number II",
+          "url": "https://leetcode.com/problems/ugly-number-ii/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53679"
+    },
+    {
+      "title": "036. transform, for_each, copy, replace and generate",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/036.mp4",
+      "duration": 25,
+      "notes": "transform(first, last, out, f) applies f to each item.\nfor_each(first, last, f) runs f on each item.\ncopy, copy_if, replace, replace_if, generate, fill_n.\nback_inserter(v) appends to a vector.",
+      "logic": {
+        "problem": "Square every number.",
+        "thinking": "The same operation applies to each element.",
+        "pattern": "Map operation",
+        "logic": "transform with a lambda.",
+        "approach": "1. Make an output vector.\n2. transform(a.begin(), a.end(), out.begin(), f).",
+        "code": "vector<int> sq(n);\ntransform(a.begin(), a.end(), sq.begin(), [](int x) { return x * x; });"
+      },
+      "problems": [
+        {
+          "title": "Squares of a Sorted Array",
+          "url": "https://leetcode.com/problems/squares-of-a-sorted-array/"
+        },
+        {
+          "title": "Fizz Buzz",
+          "url": "https://leetcode.com/problems/fizz-buzz/"
+        },
+        {
+          "title": "To Lower Case",
+          "url": "https://leetcode.com/problems/to-lower-case/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5367a"
+    },
+    {
+      "title": "037. Numeric Utilities",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/037.mp4",
+      "duration": 25,
+      "notes": "gcd(a, b) and lcm(a, b) from <numeric> (C++17).\n__gcd(a, b) works in older GCC.\n__builtin_popcount(x), __builtin_clz(x), __builtin_ctz(x); add ll for long long.\nabs, pow, sqrt, ceil, floor from <cmath>; prefer integers when possible.",
+      "logic": {
+        "problem": "Count the set bits of a number.",
+        "thinking": "Hardware has a single instruction for this.",
+        "pattern": "Built-ins",
+        "logic": "Use popcount.",
+        "approach": "1. cnt = __builtin_popcount(x).\n2. Power of two means cnt == 1.",
+        "code": "int g = gcd(12, 18);\nint bits = __builtin_popcountll(x);\nbool p2 = x > 0 && __builtin_popcount(x) == 1;"
+      },
+      "problems": [
+        {
+          "title": "Greatest Common Divisor of Strings",
+          "url": "https://leetcode.com/problems/greatest-common-divisor-of-strings/"
+        },
+        {
+          "title": "Number of 1 Bits",
+          "url": "https://leetcode.com/problems/number-of-1-bits/"
+        },
+        {
+          "title": "Hamming Distance",
+          "url": "https://leetcode.com/problems/hamming-distance/"
+        },
+        {
+          "title": "Power of Two",
+          "url": "https://leetcode.com/problems/power-of-two/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5367b"
+    },
+    {
+      "title": "038. Lambdas with STL",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/038.mp4",
+      "duration": 30,
+      "notes": "[capture](params) { body }.\n[&] captures by reference, [=] by copy, [x] one variable.\nUse with sort, find_if, transform, priority_queue.\nRecursive lambda: auto f = [&](auto self, int x) -> int { ... }; f(f, n).\nmutable lets a copy-capture change.",
+      "logic": {
+        "problem": "Sort numbers by frequency, then by value.",
+        "thinking": "The order depends on a map the lambda must see.",
+        "pattern": "Lambda with capture",
+        "logic": "Capture the frequency map by reference.",
+        "approach": "1. Count frequencies.\n2. sort with [&](int a, int b).\n3. Compare cnt[a], then a.",
+        "code": "sort(a.begin(), a.end(), [&](int x, int y) {\n  if (cnt[x] != cnt[y]) return cnt[x] < cnt[y];\n  return x > y;\n});"
+      },
+      "problems": [
+        {
+          "title": "Merge Intervals",
+          "url": "https://leetcode.com/problems/merge-intervals/"
+        },
+        {
+          "title": "K Closest Points to Origin",
+          "url": "https://leetcode.com/problems/k-closest-points-to-origin/"
+        },
+        {
+          "title": "Sort Array By Increasing Frequency",
+          "url": "https://leetcode.com/problems/sort-array-by-increasing-frequency/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5367c"
+    },
+    {
+      "title": "039. Functors and Comparators",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/039.mp4",
+      "duration": 30,
+      "notes": "A functor is a struct with operator().\nBuilt in: less<>, greater<>, plus<>, multiplies<>.\nUse a functor as the third template argument of set, map or priority_queue.\nA comparator must be a strict weak ordering.",
+      "logic": {
+        "problem": "Order a priority_queue by a custom rule.",
+        "thinking": "Container order is part of its type.",
+        "pattern": "Comparator type",
+        "logic": "Pass a struct as the third parameter.",
+        "approach": "1. struct Cmp { bool operator()(A a, A b) }.\n2. priority_queue<A, vector<A>, Cmp>.",
+        "code": "struct Cmp {\n  bool operator()(const pair<int,int>& a, const pair<int,int>& b) const { return a.second > b.second; }\n};\npriority_queue<pair<int,int>, vector<pair<int,int>>, Cmp> pq;"
+      },
+      "problems": [
+        {
+          "title": "Kth Smallest Element in a Sorted Matrix",
+          "url": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/"
+        },
+        {
+          "title": "Find K Pairs with Smallest Sums",
+          "url": "https://leetcode.com/problems/find-k-pairs-with-smallest-sums/"
+        },
+        {
+          "title": "Top K Frequent Words",
+          "url": "https://leetcode.com/problems/top-k-frequent-words/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5367d"
+    },
+    {
+      "title": "040. Custom Hash for pair and tuple Keys",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/040.mp4",
+      "duration": 30,
+      "notes": "unordered_map<pair<int,int>, T> does not compile without a hash.\nWrite a struct with operator() and combine the hashes.\nAlternative: encode the pair into a long long key (x * M + y).\nOr use map<pair<int,int>, T> at O(log n).",
+      "logic": {
+        "problem": "Use a coordinate as a map key.",
+        "thinking": "A pair has no default hash.",
+        "pattern": "Custom hash",
+        "logic": "Combine the two hashes.",
+        "approach": "1. Write struct H.\n2. Pass it to unordered_map.\n3. Or encode to long long.",
+        "code": "struct H {\n  size_t operator()(const pair<int,int>& p) const { return hash<long long>()(((long long)p.first << 32) ^ p.second); }\n};\nunordered_map<pair<int,int>, int, H> m;"
+      },
+      "problems": [
+        {
+          "title": "Number of Boomerangs",
+          "url": "https://leetcode.com/problems/number-of-boomerangs/"
+        },
+        {
+          "title": "Max Points on a Line",
+          "url": "https://leetcode.com/problems/max-points-on-a-line/"
+        },
+        {
+          "title": "Longest Consecutive Sequence",
+          "url": "https://leetcode.com/problems/longest-consecutive-sequence/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5367e"
+    },
+    {
+      "title": "041. Iterator Invalidation and Common Bugs",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/041.mp4",
+      "duration": 30,
+      "notes": "vector: push_back or insert may invalidate all iterators; erase invalidates from the position on.\nmap/set/list: erase invalidates only the erased iterator.\nUse it = c.erase(it) while looping.\nCommon bugs: unsigned size() - 1, m[key] creating keys, a comparator with <=, using end() as a value.",
+      "logic": {
+        "problem": "Erase items while looping.",
+        "thinking": "Erasing changes the container under your iterator.",
+        "pattern": "Safe erase loop",
+        "logic": "Use the iterator returned by erase.",
+        "approach": "1. Loop with an explicit iterator.\n2. If erasing: it = erase(it).\n3. Else ++it.",
+        "code": "for (auto it = s.begin(); it != s.end(); ) {\n  if (*it % 2 == 0) it = s.erase(it);\n  else ++it;\n}"
+      },
+      "problems": [
+        {
+          "title": "Remove Duplicates from Sorted Array II",
+          "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/"
+        },
+        {
+          "title": "Remove Element",
+          "url": "https://leetcode.com/problems/remove-element/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b5367f"
+    },
+    {
+      "title": "042. Performance: reserve, emplace, move",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/042.mp4",
+      "duration": 30,
+      "notes": "reserve(n) avoids repeated reallocation.\nemplace_back constructs in place; push_back copies or moves.\nPass large objects by const&; use auto& in range-for.\nstd::move transfers ownership instead of copying.\nios::sync_with_stdio(false) and \"\\n\" speed up I/O.",
+      "logic": {
+        "problem": "Why is my copy-heavy loop slow?",
+        "thinking": "for (auto x : v) copies every element.",
+        "pattern": "Avoid copies",
+        "logic": "Use references.",
+        "approach": "1. for (const auto& x : v).\n2. reserve before many push_backs.\n3. Use emplace_back.",
+        "code": "vector<string> v; v.reserve(n);\nfor (const auto& s : v) cout << s;\nv.emplace_back(\"abc\");"
+      },
+      "problems": [
+        {
+          "title": "Product of Array Except Self",
+          "url": "https://leetcode.com/problems/product-of-array-except-self/"
+        },
+        {
+          "title": "Minimum Size Subarray Sum",
+          "url": "https://leetcode.com/problems/minimum-size-subarray-sum/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53680"
+    },
+    {
+      "title": "043. Policy-based Ordered Set (pb_ds)",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/043.mp4",
+      "duration": 35,
+      "notes": "GCC only: #include <ext/pb_ds/assoc_container.hpp>.\nordered_set supports order_of_key(x) and find_by_order(k) in O(log n).\nReplace less with less_equal for multiset-like behaviour.\nNot available on every judge or in MSVC.",
+      "logic": {
+        "problem": "Count how many inserted values are smaller than x.",
+        "thinking": "A normal set cannot give ranks.",
+        "pattern": "Order statistics",
+        "logic": "order_of_key counts smaller keys.",
+        "approach": "1. Insert values.\n2. smaller = os.order_of_key(x).\n3. kth = *os.find_by_order(k).",
+        "code": "#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\nusing namespace __gnu_pbds;\ntypedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;"
+      },
+      "problems": [
+        {
+          "title": "Count of Smaller Numbers After Self",
+          "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/"
+        },
+        {
+          "title": "Reverse Pairs",
+          "url": "https://leetcode.com/problems/reverse-pairs/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53681"
+    },
+    {
+      "title": "044. Random Numbers and Shuffle",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/044.mp4",
+      "duration": 20,
+      "notes": "mt19937 rng(seed) is a good generator.\nuniform_int_distribution<int> d(lo, hi).\nshuffle(first, last, rng) permutes a range.\nSeed with chrono::steady_clock::now().time_since_epoch().count().",
+      "logic": {
+        "problem": "Shuffle an array fairly.",
+        "thinking": "Every permutation must be equally likely.",
+        "pattern": "Random shuffle",
+        "logic": "Use shuffle with a good engine.",
+        "approach": "1. Make the engine.\n2. shuffle(v.begin(), v.end(), rng).",
+        "code": "mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());\nshuffle(v.begin(), v.end(), rng);\nint r = uniform_int_distribution<int>(1, 6)(rng);"
+      },
+      "problems": [
+        {
+          "title": "Shuffle An Array",
+          "url": "https://leetcode.com/problems/shuffle-an-array/"
+        },
+        {
+          "title": "Random Pick Index",
+          "url": "https://leetcode.com/problems/random-pick-index/"
+        },
+        {
+          "title": "Insert Delete GetRandom O(1)",
+          "url": "https://leetcode.com/problems/insert-delete-getrandom-o1/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53682"
+    },
+    {
+      "title": "045. Choosing the Right Container",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/045.mp4",
+      "duration": 30,
+      "notes": "Need order or neighbours: set / map.\nNeed only membership or count: unordered_set / unordered_map.\nNeed min or max repeatedly: priority_queue.\nNeed both ends: deque. Need LIFO: stack. Need FIFO: queue.\nNeed O(1) random access: vector.\nNeed stable references and O(1) splice: list.",
+      "logic": {
+        "problem": "Support insert, delete and random pick in O(1).",
+        "thinking": "A hash map finds items; a vector picks randomly.",
+        "pattern": "Combine containers",
+        "logic": "Map value → index in a vector.",
+        "approach": "1. Append to the vector and store the index.\n2. Delete: swap with last, pop.\n3. Pick a random index.",
+        "code": "vector<int> v; unordered_map<int,int> pos;\nvoid ins(int x) { pos[x] = v.size(); v.push_back(x); }"
+      },
+      "problems": [
+        {
+          "title": "Design HashMap",
+          "url": "https://leetcode.com/problems/design-hashmap/"
+        },
+        {
+          "title": "Insert Delete GetRandom O(1)",
+          "url": "https://leetcode.com/problems/insert-delete-getrandom-o1/"
+        },
+        {
+          "title": "LFU Cache",
+          "url": "https://leetcode.com/problems/lfu-cache/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53683"
+    },
+    {
+      "title": "046. Grids and 2D Containers",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/046.mp4",
+      "duration": 30,
+      "notes": "vector<vector<int>> for grids; vector<string> for character maps.\nDirections: int dx[] = {1,-1,0,0}, dy[] = {0,0,1,-1}.\nBounds check before access.\nvisited as a grid of the same size.\nqueue<pair<int,int>> for BFS.",
+      "logic": {
+        "problem": "Count islands in a grid.",
+        "thinking": "Each island is one connected group.",
+        "pattern": "Flood fill",
+        "logic": "Visit a land cell, then sink all connected land.",
+        "approach": "1. Scan cells.\n2. On land, count + 1 and flood.\n3. Flood marks cells visited.",
+        "code": "int dx[] = {1, -1, 0, 0}, dy[] = {0, 0, 1, -1};\nvoid dfs(int r, int c) {\n  if (r < 0 || c < 0 || r >= R || c >= C || g[r][c] != '1') return;\n  g[r][c] = '0';\n  for (int d = 0; d < 4; d++) dfs(r + dx[d], c + dy[d]);\n}"
+      },
+      "problems": [
+        {
+          "title": "Number of Islands",
+          "url": "https://leetcode.com/problems/number-of-islands/"
+        },
+        {
+          "title": "Rotting Oranges",
+          "url": "https://leetcode.com/problems/rotting-oranges/"
+        },
+        {
+          "title": "Spiral Matrix",
+          "url": "https://leetcode.com/problems/spiral-matrix/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53684"
+    },
+    {
+      "title": "047. Graphs with STL",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/047.mp4",
+      "duration": 40,
+      "notes": "vector<vector<int>> g(n) is an adjacency list.\nBFS with queue, DFS with recursion or stack.\nDijkstra: priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>>.\nTopological sort with a queue and an indegree array.",
+      "logic": {
+        "problem": "Shortest path in a weighted graph.",
+        "thinking": "BFS counts edges, but edges have weights.",
+        "pattern": "Dijkstra",
+        "logic": "Always expand the closest unsettled node.",
+        "approach": "1. dist = INF, dist[s] = 0.\n2. Pop the smallest (d, u).\n3. Relax each edge.",
+        "code": "priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;\npq.push({0, s}); dist[s] = 0;\nwhile (!pq.empty()) {\n  auto [d, u] = pq.top(); pq.pop();\n  if (d > dist[u]) continue;\n  for (auto [v, w] : g[u]) if (d + w < dist[v]) { dist[v] = d + w; pq.push({dist[v], v}); }\n}"
+      },
+      "problems": [
+        {
+          "title": "Course Schedule",
+          "url": "https://leetcode.com/problems/course-schedule/"
+        },
+        {
+          "title": "Network Delay Time",
+          "url": "https://leetcode.com/problems/network-delay-time/"
+        },
+        {
+          "title": "Clone Graph",
+          "url": "https://leetcode.com/problems/clone-graph/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53685"
+    },
+    {
+      "title": "048. Intervals and Scheduling with STL",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/048.mp4",
+      "duration": 35,
+      "notes": "Sort by start to merge; sort by end for the maximum number of non-overlapping intervals.\nmap<int,int> can store disjoint intervals; lower_bound finds neighbours.\nmultiset or priority_queue tracks end times (meeting rooms).\nAlways define whether touching intervals overlap.",
+      "logic": {
+        "problem": "Merge overlapping intervals.",
+        "thinking": "After sorting by start, overlaps are neighbours.",
+        "pattern": "Sort + scan",
+        "logic": "Extend the last interval or start a new one.",
+        "approach": "1. Sort by start.\n2. If start <= last end, extend.\n3. Else push a new interval.",
+        "code": "sort(v.begin(), v.end());\nvector<vector<int>> res;\nfor (auto& x : v) {\n  if (res.empty() || res.back()[1] < x[0]) res.push_back(x);\n  else res.back()[1] = max(res.back()[1], x[1]);\n}"
+      },
+      "problems": [
+        {
+          "title": "Merge Intervals",
+          "url": "https://leetcode.com/problems/merge-intervals/"
+        },
+        {
+          "title": "Insert Interval",
+          "url": "https://leetcode.com/problems/insert-interval/"
+        },
+        {
+          "title": "Non Overlapping Intervals",
+          "url": "https://leetcode.com/problems/non-overlapping-intervals/"
+        },
+        {
+          "title": "My Calendar II",
+          "url": "https://leetcode.com/problems/my-calendar-ii/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53686"
+    },
+    {
+      "title": "049. Top Interview Patterns with STL",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/049.mp4",
+      "duration": 35,
+      "notes": "Frequency map + heap for top-k.\nDeque for sliding-window maximum.\nSet or map for neighbour queries.\nSort + two pointers for pair problems.\nStack for next greater and parentheses.\nKnow which container each pattern uses.",
+      "logic": {
+        "problem": "Top k frequent elements.",
+        "thinking": "Count first, then keep the k best counts.",
+        "pattern": "Frequency map + heap",
+        "logic": "Count with unordered_map, select with a min-heap.",
+        "approach": "1. Count with unordered_map.\n2. Push (count, value) to a min-heap.\n3. Keep size k.",
+        "code": "unordered_map<int,int> cnt;\nfor (int x : a) cnt[x]++;\npriority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;\nfor (auto& [v, c] : cnt) { pq.push({c, v}); if ((int)pq.size() > k) pq.pop(); }"
+      },
+      "problems": [
+        {
+          "title": "Sliding Window Maximum",
+          "url": "https://leetcode.com/problems/sliding-window-maximum/"
+        },
+        {
+          "title": "Top K Frequent Elements",
+          "url": "https://leetcode.com/problems/top-k-frequent-elements/"
+        },
+        {
+          "title": "Longest Substring Without Repeating Characters",
+          "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53687"
+    },
+    {
+      "title": "050. Final STL Cheat Sheet and Practice Plan",
+      "videoUrl": "https://YOUR-CDN.com/stl-mastery/050.mp4",
+      "duration": 30,
+      "notes": "Keep a one-page list: container → operations → complexity.\nPractise in rounds: containers, then algorithms, then mixed problems.\nAfter each problem write which STL tools you used.\nTime yourself: 20 minutes for an easy, 40 for a medium.\nReview mistakes weekly.",
+      "logic": {
+        "problem": "Which STL tools does this problem need?",
+        "thinking": "The statement hints at the container.",
+        "pattern": "STL toolbox",
+        "logic": "Name the operations, then the container.",
+        "approach": "1. Write the operations needed.\n2. Pick the container.\n3. Pick the algorithms.",
+        "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  ios::sync_with_stdio(false); cin.tie(nullptr);\n  // solve here\n}"
+      },
+      "problems": [
+        {
+          "title": "LRU Cache",
+          "url": "https://leetcode.com/problems/lru-cache/"
+        },
+        {
+          "title": "Find Median from Data Stream",
+          "url": "https://leetcode.com/problems/find-median-from-data-stream/"
+        },
+        {
+          "title": "Word Ladder",
+          "url": "https://leetcode.com/problems/word-ladder/"
+        }
+      ],
+      "id": "6ae5e1aaf8580fca05b53688"
+    }
+  ]
+}

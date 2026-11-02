@@ -1,0 +1,28 @@
+{
+  "sessions": [
+    {
+      "course": "Python for DSA",
+      "title": "Python for DSA — Session 01: Basics and Strings",
+      "startsAt": "2026-11-08T19:00:00+05:30",
+      "joinUrl": "https://meet.google.com/your-link"
+    },
+    {
+      "course": "Python for DSA",
+      "title": "Python for DSA — Session 02: Lists, Dicts and Sets",
+      "startsAt": "2026-11-15T19:00:00+05:30",
+      "joinUrl": "https://meet.google.com/your-link"
+    },
+    {
+      "course": "Python for DSA",
+      "title": "Python for DSA — Session 03: Recursion and Complexity",
+      "startsAt": "2026-11-22T19:00:00+05:30",
+      "joinUrl": "https://meet.google.com/your-link"
+    },
+    {
+      "course": "Python for DSA",
+      "title": "Python for DSA — Session 04: Trees and Graphs",
+      "startsAt": "2026-11-29T19:00:00+05:30",
+      "joinUrl": "https://meet.google.com/your-link"
+    }
+  ]
+}

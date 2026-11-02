@@ -1,0 +1,2672 @@
+{
+  "title": "DSA with C++",
+  "instructor": "Alpha Coding School Team",
+  "level": "Basic → Advanced",
+  "price": 1499,
+  "featured": true,
+  "description": "Complete Data Structures and Algorithms in C++ from setup to advanced: 100 lessons, each with notes, logic and practice problems.",
+  "includes": [
+    "Videos",
+    "Notes",
+    "Logic",
+    "Live Classes",
+    "Practice"
+  ],
+  "lessons": [
+    {
+      "title": "001. Setup and First Program",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/001.mp4",
+      "duration": 15,
+      "notes": "Install g++ (MinGW / Xcode CLT / apt) and VS Code.\nCompile: g++ main.cpp -o main\nRun: ./main\nEvery program starts at main().",
+      "logic": {
+        "problem": "Print \"Hello, DSA\" and run it.",
+        "thinking": "Where does a C++ program start, and how does it become something runnable?",
+        "pattern": "Compile, then run",
+        "logic": "Source code is compiled by g++ into an executable.",
+        "approach": "1. Write main.cpp.\n2. Compile it.\n3. Run the output.",
+        "code": "#include <iostream>\nint main() { std::cout << \"Hello, DSA\\n\"; }"
+      },
+      "problems": [
+        {
+          "title": "Fizz Buzz",
+          "url": "https://leetcode.com/problems/fizz-buzz/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d7fe"
+    },
+    {
+      "title": "002. Program Structure and Headers",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/002.mp4",
+      "duration": 15,
+      "notes": "#include pulls in library code.\nbits/stdc++.h includes everything (fine for practice).\nusing namespace std; avoids the std:: prefix.\nStatements end with ;",
+      "logic": {
+        "problem": "Why does my program need #include lines?",
+        "thinking": "Code you did not write must be brought in before use.",
+        "pattern": "Headers",
+        "logic": "A header declares what a library offers.",
+        "approach": "1. Include the header.\n2. Use its names.\n3. Compile.",
+        "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main() { return 0; }"
+      },
+      "problems": [
+        {
+          "title": "Running Sum of 1d Array",
+          "url": "https://leetcode.com/problems/running-sum-of-1d-array/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d7ff"
+    },
+    {
+      "title": "003. Variables and Data Types",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/003.mp4",
+      "duration": 20,
+      "notes": "int (4 bytes, about ±2.1e9), long long (8 bytes, about ±9.2e18), double, char, bool.\nOverflow: int * int can exceed the range. Use long long when values reach 1e5 * 1e5.\nsizeof(type) shows the size.",
+      "logic": {
+        "problem": "Why does 100000 * 100000 print a wrong number?",
+        "thinking": "The result needs more than 32 bits.",
+        "pattern": "Overflow awareness",
+        "logic": "Choose the type by the largest value you may store.",
+        "approach": "1. Estimate the max value.\n2. If above 2e9, use long long.",
+        "code": "long long x = 100000LL * 100000;"
+      },
+      "problems": [
+        {
+          "title": "Reverse Integer",
+          "url": "https://leetcode.com/problems/reverse-integer/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d800"
+    },
+    {
+      "title": "004. Input, Output and Fast I/O",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/004.mp4",
+      "duration": 15,
+      "notes": "cin >> a >> b; cout << a << \"\\n\";\nUse \"\\n\" instead of endl (endl flushes and is slow).\nFast I/O: ios::sync_with_stdio(false); cin.tie(nullptr);\ngetline(cin, s) reads a full line.",
+      "logic": {
+        "problem": "Read n numbers and print their sum quickly.",
+        "thinking": "Large inputs make slow I/O the bottleneck.",
+        "pattern": "Fast I/O",
+        "logic": "Untie cin from cout and skip C-stdio sync.",
+        "approach": "1. Add the two lines at the top of main.\n2. Read in a loop.\n3. Print with \"\\n\".",
+        "code": "ios::sync_with_stdio(false); cin.tie(nullptr);\nint n; cin >> n; long long s = 0;\nfor (int i = 0, x; i < n; i++) { cin >> x; s += x; }\ncout << s << \"\\n\";"
+      },
+      "problems": [
+        {
+          "title": "Richest Customer Wealth",
+          "url": "https://leetcode.com/problems/richest-customer-wealth/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d801"
+    },
+    {
+      "title": "005. Operators",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/005.mp4",
+      "duration": 20,
+      "notes": "Arithmetic + - * / %; integer division truncates.\nLogical && || !; bitwise & | ^ ~ << >>\nx++ vs ++x; use brackets when unsure about precedence.\n= assigns, == compares.",
+      "logic": {
+        "problem": "Check if a number is even, or a power of two.",
+        "thinking": "Bit operations answer yes/no questions in O(1).",
+        "pattern": "Bitwise checks",
+        "logic": "n & (n - 1) clears the lowest set bit.",
+        "approach": "1. Even: n % 2 == 0.\n2. Power of two: n > 0 and (n & (n-1)) == 0.",
+        "code": "bool isPow2(int n) { return n > 0 && (n & (n - 1)) == 0; }"
+      },
+      "problems": [
+        {
+          "title": "Power of Two",
+          "url": "https://leetcode.com/problems/power-of-two/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d802"
+    },
+    {
+      "title": "006. Conditionals",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/006.mp4",
+      "duration": 15,
+      "notes": "if / else if / else, switch (needs break), ternary a ? b : c.\nCheck the edge case first (empty, zero, negative).",
+      "logic": {
+        "problem": "Decide which branch handles each input.",
+        "thinking": "Write conditions from most specific to most general.",
+        "pattern": "Branching",
+        "logic": "Exactly one branch should run for each input.",
+        "approach": "1. List the cases.\n2. Order them.\n3. Test the borders.",
+        "code": "if (x < 0) cout << \"neg\"; else if (x == 0) cout << \"zero\"; else cout << \"pos\";"
+      },
+      "problems": [
+        {
+          "title": "Can Place Flowers",
+          "url": "https://leetcode.com/problems/can-place-flowers/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d803"
+    },
+    {
+      "title": "007. Loops",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/007.mp4",
+      "duration": 20,
+      "notes": "for (init; cond; step), while, do-while.\nbreak leaves the loop, continue skips to the next round.\nThe number of rounds decides the time complexity.",
+      "logic": {
+        "problem": "Check whether n is prime.",
+        "thinking": "Divisors come in pairs, so look only up to √n.",
+        "pattern": "Loop bounds",
+        "logic": "If d divides n, so does n/d.",
+        "approach": "1. Loop i from 2 while i*i <= n.\n2. If n % i == 0, not prime.\n3. Otherwise prime.",
+        "code": "bool prime(int n) {\n  if (n < 2) return false;\n  for (long long i = 2; i * i <= n; i++) if (n % i == 0) return false;\n  return true;\n}"
+      },
+      "problems": [
+        {
+          "title": "Count Primes",
+          "url": "https://leetcode.com/problems/count-primes/"
+        },
+        {
+          "title": "Happy Number",
+          "url": "https://leetcode.com/problems/happy-number/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d804"
+    },
+    {
+      "title": "008. Pattern Printing",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/008.mp4",
+      "duration": 25,
+      "notes": "Outer loop = rows, inner loop = columns.\nFind the rule: stars per row, spaces per row.\nDry-run n = 3 on paper first.",
+      "logic": {
+        "problem": "Print a right triangle of stars.",
+        "thinking": "Row i has i stars.",
+        "pattern": "Nested loops",
+        "logic": "Rows drive the outer loop, the row rule drives the inner loop.",
+        "approach": "1. for i in 1..n.\n2. for j in 1..i print *.\n3. Print a newline.",
+        "code": "for (int i = 1; i <= n; i++) {\n  for (int j = 1; j <= i; j++) cout << \"*\";\n  cout << \"\\n\";\n}"
+      },
+      "problems": [
+        {
+          "title": "Pascal's Triangle",
+          "url": "https://leetcode.com/problems/pascals-triangle/"
+        },
+        {
+          "title": "Pascal's Triangle II",
+          "url": "https://leetcode.com/problems/pascals-triangle-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d805"
+    },
+    {
+      "title": "009. Functions",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/009.mp4",
+      "duration": 20,
+      "notes": "Return type, name, parameters.\nDefault arguments and overloading.\nPass by value copies; use a reference to avoid copying big data.\nDeclare before use (prototype).",
+      "logic": {
+        "problem": "Compute power(a, b) as a reusable piece.",
+        "thinking": "Split the program into small testable pieces.",
+        "pattern": "Functional decomposition",
+        "logic": "One function does one job.",
+        "approach": "1. Name the job.\n2. Decide inputs and output.\n3. Test it alone.",
+        "code": "long long power(long long a, int b) {\n  long long r = 1;\n  while (b--) r *= a;\n  return r;\n}"
+      },
+      "problems": [
+        {
+          "title": "Pow(x, n)",
+          "url": "https://leetcode.com/problems/powx-n/"
+        },
+        {
+          "title": "Sqrt(x)",
+          "url": "https://leetcode.com/problems/sqrtx/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d806"
+    },
+    {
+      "title": "010. References and Pointers",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/010.mp4",
+      "duration": 30,
+      "notes": "int& r = x; r is another name for x.\nint* p = &x; *p reads x, p holds the address.\nPass big vectors as const vector<int>&.\nnullptr means \"points to nothing\".",
+      "logic": {
+        "problem": "Swap two numbers in a function.",
+        "thinking": "A copy cannot change the original.",
+        "pattern": "Pass by reference",
+        "logic": "A reference works on the caller's variable.",
+        "approach": "1. Take both params by &.\n2. Swap using a temp.",
+        "code": "void swp(int& a, int& b) { int t = a; a = b; b = t; }"
+      },
+      "problems": [
+        {
+          "title": "Move Zeroes",
+          "url": "https://leetcode.com/problems/move-zeroes/"
+        },
+        {
+          "title": "Remove Element",
+          "url": "https://leetcode.com/problems/remove-element/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d807"
+    },
+    {
+      "title": "011. Arrays",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/011.mp4",
+      "duration": 25,
+      "notes": "int a[n]; index 0..n-1; no bounds checking.\nGlobal arrays start as 0, local arrays hold garbage.\nAn array decays to a pointer when passed to a function.\nTraverse with for or range-for.",
+      "logic": {
+        "problem": "Find the maximum of an array.",
+        "thinking": "Keep one answer and improve it while scanning.",
+        "pattern": "Linear scan",
+        "logic": "Compare each element with the best so far.",
+        "approach": "1. best = a[0].\n2. Scan from index 1.\n3. Update best.",
+        "code": "int best = a[0];\nfor (int i = 1; i < n; i++) best = max(best, a[i]);"
+      },
+      "problems": [
+        {
+          "title": "Find Numbers with Even Number of Digits",
+          "url": "https://leetcode.com/problems/find-numbers-with-even-number-of-digits/"
+        },
+        {
+          "title": "Remove Duplicates from Sorted Array",
+          "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d808"
+    },
+    {
+      "title": "012. 2D Arrays",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/012.mp4",
+      "duration": 25,
+      "notes": "int g[r][c]; g[i][j] = row i, column j.\nRow-major traversal is cache friendly.\nvector<vector<int>> g(r, vector<int>(c, 0));\nDirections: dx[] = {1,-1,0,0}, dy[] = {0,0,1,-1}.",
+      "logic": {
+        "problem": "Transpose a matrix.",
+        "thinking": "Cell (i, j) moves to (j, i).",
+        "pattern": "Index mapping",
+        "logic": "Write the rule for where each cell goes.",
+        "approach": "1. Make the result c x r.\n2. res[j][i] = g[i][j].",
+        "code": "for (int i = 0; i < r; i++)\n  for (int j = 0; j < c; j++) res[j][i] = g[i][j];"
+      },
+      "problems": [
+        {
+          "title": "Transpose Matrix",
+          "url": "https://leetcode.com/problems/transpose-matrix/"
+        },
+        {
+          "title": "Toeplitz Matrix",
+          "url": "https://leetcode.com/problems/toeplitz-matrix/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d809"
+    },
+    {
+      "title": "013. Strings",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/013.mp4",
+      "duration": 25,
+      "notes": "string s; s.size(), s[i], s + t, substr(pos, len), find, push_back.\nCompare with ==, sort with sort(s.begin(), s.end()).\nStrings are mutable in C++.\nc - 'a' maps letters to 0..25.",
+      "logic": {
+        "problem": "Count each letter in a string.",
+        "thinking": "26 letters fit in a small array.",
+        "pattern": "Frequency array",
+        "logic": "Map each letter to an index.",
+        "approach": "1. int cnt[26] = {}.\n2. cnt[c - 'a']++ for each c.",
+        "code": "int cnt[26] = {};\nfor (char c : s) cnt[c - 'a']++;"
+      },
+      "problems": [
+        {
+          "title": "Reverse String",
+          "url": "https://leetcode.com/problems/reverse-string/"
+        },
+        {
+          "title": "First Unique Character in a String",
+          "url": "https://leetcode.com/problems/first-unique-character-in-a-string/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d80a"
+    },
+    {
+      "title": "014. Number Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/014.mp4",
+      "duration": 25,
+      "notes": "Last digit: n % 10. Remove last digit: n / 10.\nReverse, palindrome, Armstrong, digit sum.\nWatch for overflow when reversing.",
+      "logic": {
+        "problem": "Reverse the digits of a number.",
+        "thinking": "Peel digits from the right, build from the left.",
+        "pattern": "Digit extraction",
+        "logic": "rev = rev * 10 + (n % 10), then n /= 10.",
+        "approach": "1. rev = 0.\n2. While n > 0 take the last digit.\n3. Append it to rev.",
+        "code": "long long rev = 0;\nwhile (n > 0) { rev = rev * 10 + n % 10; n /= 10; }"
+      },
+      "problems": [
+        {
+          "title": "Palindrome Number",
+          "url": "https://leetcode.com/problems/palindrome-number/"
+        },
+        {
+          "title": "Add Digits",
+          "url": "https://leetcode.com/problems/add-digits/"
+        },
+        {
+          "title": "Plus One",
+          "url": "https://leetcode.com/problems/plus-one/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d80b"
+    },
+    {
+      "title": "015. Time Complexity and Big-O",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/015.mp4",
+      "duration": 30,
+      "notes": "Count how steps grow with n, ignore constants.\nO(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(2^n) < O(n!).\nAbout 1e8 simple operations fit in 1 second.\nn ≤ 1e5 → O(n log n); n ≤ 1e3 → O(n^2); n ≤ 20 → O(2^n).",
+      "logic": {
+        "problem": "Which solution is fast enough for n = 1e5?",
+        "thinking": "Constraints tell you the allowed complexity.",
+        "pattern": "Constraint reading",
+        "logic": "Match n to the table above.",
+        "approach": "1. Read n.\n2. Pick the allowed Big-O.\n3. Choose an algorithm that fits.",
+        "code": "// Brute force O(n^2), sort O(n log n), hash set O(n)"
+      },
+      "problems": [
+        {
+          "title": "Contains Duplicate",
+          "url": "https://leetcode.com/problems/contains-duplicate/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d80c"
+    },
+    {
+      "title": "016. Space Complexity",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/016.mp4",
+      "duration": 20,
+      "notes": "Extra memory your algorithm uses.\nRecursion uses stack space: depth d means O(d).\nMemory limit: about 256 MB ≈ 6e7 ints.\nIn-place means O(1) extra space.",
+      "logic": {
+        "problem": "Trade memory for speed.",
+        "thinking": "A hash table can turn O(n^2) time into O(n) time at O(n) space.",
+        "pattern": "Time-space trade-off",
+        "logic": "Spend memory to save time.",
+        "approach": "1. Find repeated work.\n2. Store its result.\n3. Reuse it."
+      },
+      "problems": [
+        {
+          "title": "Valid Anagram",
+          "url": "https://leetcode.com/problems/valid-anagram/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d80d"
+    },
+    {
+      "title": "017. Recursion Basics",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/017.mp4",
+      "duration": 30,
+      "notes": "A function that calls itself on a smaller input.\nAlways have a base case.\nEach call adds a frame on the call stack.\nToo deep recursion causes stack overflow (about 1e5 depth).",
+      "logic": {
+        "problem": "Find the sum of 1..n.",
+        "thinking": "sum(n) depends on sum(n-1).",
+        "pattern": "Recursion (smaller subproblem)",
+        "logic": "sum(n) = n + sum(n-1), sum(0) = 0.",
+        "approach": "1. Write the base case.\n2. Reduce n.\n3. Combine.",
+        "code": "int sum(int n) { return n == 0 ? 0 : n + sum(n - 1); }"
+      },
+      "problems": [
+        {
+          "title": "Fibonacci Number",
+          "url": "https://leetcode.com/problems/fibonacci-number/"
+        },
+        {
+          "title": "Power of Three",
+          "url": "https://leetcode.com/problems/power-of-three/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d80e"
+    },
+    {
+      "title": "018. Recursion Practice and Dry Run",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/018.mp4",
+      "duration": 35,
+      "notes": "Dry run = draw the call tree with arguments and returns.\nCount calls to find the complexity: naive fib(n) is O(2^n).\nPass state as parameters instead of globals.",
+      "logic": {
+        "problem": "Compute a^n in O(log n).",
+        "thinking": "a^n = (a^(n/2))^2, halve the problem.",
+        "pattern": "Divide and conquer",
+        "logic": "Solve half, square, fix odd.",
+        "approach": "1. n == 0 → 1.\n2. h = pw(a, n/2).\n3. Return h*h (times a if odd).",
+        "code": "double pw(double a, long long n) {\n  if (n == 0) return 1;\n  double h = pw(a, n / 2);\n  return n % 2 ? h * h * a : h * h;\n}"
+      },
+      "problems": [
+        {
+          "title": "Pow(x, n)",
+          "url": "https://leetcode.com/problems/powx-n/"
+        },
+        {
+          "title": "Sum of All Subset Xor Totals",
+          "url": "https://leetcode.com/problems/sum-of-all-subset-xor-totals/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d80f"
+    },
+    {
+      "title": "019. STL: vector",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/019.mp4",
+      "duration": 30,
+      "notes": "vector<int> v; push_back, pop_back, size, back, clear, insert, erase.\npush_back is amortised O(1); insert/erase in the middle is O(n).\nreserve(n) avoids reallocations.\n2D: vector<vector<int>>.",
+      "logic": {
+        "problem": "Store n numbers when n is unknown at compile time.",
+        "thinking": "Arrays are fixed size, vectors grow.",
+        "pattern": "Dynamic array",
+        "logic": "Use vector as the default array.",
+        "approach": "1. Declare vector<int> v(n).\n2. Fill it, then use it.",
+        "code": "vector<int> v(n);\nfor (int& x : v) cin >> x;"
+      },
+      "problems": [
+        {
+          "title": "Concatenation of Array",
+          "url": "https://leetcode.com/problems/concatenation-of-array/"
+        },
+        {
+          "title": "Shuffle the Array",
+          "url": "https://leetcode.com/problems/shuffle-the-array/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d810"
+    },
+    {
+      "title": "020. STL: pair, tuple and array",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/020.mp4",
+      "duration": 20,
+      "notes": "pair<int,int> p = {a, b}; p.first, p.second.\nPairs compare by first, then second.\ntuple<int,int,int> and get<0>(t).\narray<int, 5> is a fixed-size safe array.",
+      "logic": {
+        "problem": "Sort people by height but keep their names.",
+        "thinking": "Keep related values together.",
+        "pattern": "Pair as a record",
+        "logic": "Sort pairs, the key goes first.",
+        "approach": "1. Make pair(height, name).\n2. sort.\n3. Read back.",
+        "code": "vector<pair<int,string>> v;\nsort(v.rbegin(), v.rend());"
+      },
+      "problems": [
+        {
+          "title": "Sort the People",
+          "url": "https://leetcode.com/problems/sort-the-people/"
+        },
+        {
+          "title": "K Weakest Rows in a Matrix",
+          "url": "https://leetcode.com/problems/k-weakest-rows-in-a-matrix/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d811"
+    },
+    {
+      "title": "021. STL: set, multiset, unordered_set",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/021.mp4",
+      "duration": 30,
+      "notes": "set: sorted, unique, O(log n). unordered_set: O(1) average.\nmultiset allows duplicates.\ninsert, erase, find, count, lower_bound.\nUse set when you need order, unordered_set when you only need membership.",
+      "logic": {
+        "problem": "Do I have this number already?",
+        "thinking": "Membership checks should be O(1).",
+        "pattern": "Hash set",
+        "logic": "Put everything in a set, then ask.",
+        "approach": "1. Insert all numbers.\n2. For each x, test x-1 and x+1.",
+        "code": "unordered_set<int> s(a.begin(), a.end());\nbool has = s.count(5);"
+      },
+      "problems": [
+        {
+          "title": "Intersection of Two Arrays",
+          "url": "https://leetcode.com/problems/intersection-of-two-arrays/"
+        },
+        {
+          "title": "Longest Consecutive Sequence",
+          "url": "https://leetcode.com/problems/longest-consecutive-sequence/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d812"
+    },
+    {
+      "title": "022. STL: map and unordered_map",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/022.mp4",
+      "duration": 30,
+      "notes": "map: sorted by key, O(log n). unordered_map: O(1) average.\nm[key]++ creates the key with 0 if missing.\nfor (auto& [k, v] : m)\nUse find() when you must not create keys.",
+      "logic": {
+        "problem": "Find two numbers adding to target.",
+        "thinking": "For x, I need to know if target - x was seen.",
+        "pattern": "Hash map lookup",
+        "logic": "Store value → index while scanning.",
+        "approach": "1. For each x, look up target - x.\n2. If found, answer.\n3. Else store x.",
+        "code": "unordered_map<int,int> seen;\nfor (int i = 0; i < n; i++) {\n  if (seen.count(t - a[i])) return {seen[t - a[i]], i};\n  seen[a[i]] = i;\n}"
+      },
+      "problems": [
+        {
+          "title": "Two Sum",
+          "url": "https://leetcode.com/problems/two-sum/"
+        },
+        {
+          "title": "Group Anagrams",
+          "url": "https://leetcode.com/problems/group-anagrams/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d813"
+    },
+    {
+      "title": "023. STL: stack, queue and deque",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/023.mp4",
+      "duration": 25,
+      "notes": "stack: push, pop, top, empty (LIFO).\nqueue: push, pop, front, back (FIFO).\ndeque: push/pop at both ends, O(1).\ntop()/front() on empty is undefined: check empty() first.",
+      "logic": {
+        "problem": "Which structure gives the latest or the oldest item?",
+        "thinking": "Last in first out → stack. First in first out → queue.",
+        "pattern": "Choose by access order",
+        "logic": "Match the access order of the problem.",
+        "approach": "1. Write who must leave first.\n2. Pick stack or queue.",
+        "code": "stack<int> st; st.push(1); st.pop();"
+      },
+      "problems": [
+        {
+          "title": "Valid Parentheses",
+          "url": "https://leetcode.com/problems/valid-parentheses/"
+        },
+        {
+          "title": "Implement Queue Using Stacks",
+          "url": "https://leetcode.com/problems/implement-queue-using-stacks/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d814"
+    },
+    {
+      "title": "024. STL: priority_queue",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/024.mp4",
+      "duration": 25,
+      "notes": "Max-heap by default; min-heap: priority_queue<int, vector<int>, greater<int>>.\npush, pop O(log n), top O(1).\nPairs compare by the first element.\nNo iteration and no random access.",
+      "logic": {
+        "problem": "Repeatedly take the largest item.",
+        "thinking": "Sorting every time is wasteful.",
+        "pattern": "Heap",
+        "logic": "A heap keeps the best item on top.",
+        "approach": "1. Push all.\n2. Pop the top as needed.\n3. Push results back.",
+        "code": "priority_queue<int, vector<int>, greater<int>> pq;"
+      },
+      "problems": [
+        {
+          "title": "Last Stone Weight",
+          "url": "https://leetcode.com/problems/last-stone-weight/"
+        },
+        {
+          "title": "Kth Largest Element in a Stream",
+          "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d815"
+    },
+    {
+      "title": "025. STL Algorithms and Comparators",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/025.mp4",
+      "duration": 30,
+      "notes": "sort, reverse, max_element, min_element, accumulate, count, find, unique.\nbinary_search, lower_bound (≥ x), upper_bound (> x) on sorted data.\nCustom sort: lambda [](auto& a, auto& b){ return a.x < b.x; }.\nnext_permutation walks all permutations.",
+      "logic": {
+        "problem": "Sort intervals by start.",
+        "thinking": "Sorting gives order, then one scan decides.",
+        "pattern": "Sort + scan",
+        "logic": "Choose the key that makes the problem simple.",
+        "approach": "1. Sort by key.\n2. Scan once.",
+        "code": "sort(v.begin(), v.end(), [](auto& a, auto& b) { return a[0] < b[0]; });"
+      },
+      "problems": [
+        {
+          "title": "Merge Intervals",
+          "url": "https://leetcode.com/problems/merge-intervals/"
+        },
+        {
+          "title": "Largest Number",
+          "url": "https://leetcode.com/problems/largest-number/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d816"
+    },
+    {
+      "title": "026. Iterators and Common Pitfalls",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/026.mp4",
+      "duration": 25,
+      "notes": "Iterator = pointer-like handle: begin(), end().\nErasing or inserting in a vector can invalidate iterators.\nv.size() is unsigned: v.size() - 1 on an empty vector gives a huge number.\nUse auto and range-for for clean code.",
+      "logic": {
+        "problem": "Why does my loop crash on an empty vector?",
+        "thinking": "Unsigned arithmetic wraps around.",
+        "pattern": "Know your pitfalls",
+        "logic": "Cast to int when subtracting from size().",
+        "approach": "1. int n = v.size().\n2. Loop with n - 1.",
+        "code": "int n = (int)v.size();"
+      },
+      "problems": [
+        {
+          "title": "Squares of a Sorted Array",
+          "url": "https://leetcode.com/problems/squares-of-a-sorted-array/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d817"
+    },
+    {
+      "title": "027. Array Basics Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/027.mp4",
+      "duration": 30,
+      "notes": "Max / min / second largest in one pass.\nReverse in place with two indexes.\nRotate: reverse the whole, then reverse the parts.\nAlways test n = 0, 1, 2.",
+      "logic": {
+        "problem": "Rotate an array right by k.",
+        "thinking": "Reversing three times moves elements without extra memory.",
+        "pattern": "Reversal trick",
+        "logic": "Reverse all, reverse the first k, reverse the rest.",
+        "approach": "1. k %= n.\n2. reverse the whole array.\n3. reverse the first k, then the rest.",
+        "code": "k %= n;\nreverse(a.begin(), a.end());\nreverse(a.begin(), a.begin() + k);\nreverse(a.begin() + k, a.end());"
+      },
+      "problems": [
+        {
+          "title": "Rotate Array",
+          "url": "https://leetcode.com/problems/rotate-array/"
+        },
+        {
+          "title": "Best Time to Buy and Sell Stock",
+          "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d818"
+    },
+    {
+      "title": "028. Prefix Sum",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/028.mp4",
+      "duration": 30,
+      "notes": "pre[i] = a[0] + ... + a[i-1].\nRange sum [l, r] = pre[r+1] - pre[l] in O(1).\nDifference array: add to a range in O(1), rebuild in O(n).\n2D prefix sums for rectangles.",
+      "logic": {
+        "problem": "Answer many range-sum queries fast.",
+        "thinking": "Repeated sums repeat work.",
+        "pattern": "Prefix sum",
+        "logic": "Pre-compute once, answer in O(1).",
+        "approach": "1. Build pre.\n2. Answer = pre[r+1] - pre[l].",
+        "code": "vector<long long> pre(n + 1, 0);\nfor (int i = 0; i < n; i++) pre[i + 1] = pre[i] + a[i];"
+      },
+      "problems": [
+        {
+          "title": "Range Sum Query Immutable",
+          "url": "https://leetcode.com/problems/range-sum-query-immutable/"
+        },
+        {
+          "title": "Find Pivot Index",
+          "url": "https://leetcode.com/problems/find-pivot-index/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d819"
+    },
+    {
+      "title": "029. Kadane's Algorithm",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/029.mp4",
+      "duration": 30,
+      "notes": "Maximum sum of a contiguous subarray in O(n).\nAt each index: extend the previous subarray, or start fresh.\nWorks with all-negative arrays if best starts at a[0].\nTrack indexes to print the subarray.",
+      "logic": {
+        "problem": "Maximum sum subarray.",
+        "thinking": "A negative running sum only hurts the next elements.",
+        "pattern": "Kadane",
+        "logic": "cur = max(a[i], cur + a[i]).",
+        "approach": "1. cur = best = a[0].\n2. Update cur.\n3. Update best.",
+        "code": "int cur = a[0], best = a[0];\nfor (int i = 1; i < n; i++) {\n  cur = max(a[i], cur + a[i]);\n  best = max(best, cur);\n}"
+      },
+      "problems": [
+        {
+          "title": "Maximum Subarray",
+          "url": "https://leetcode.com/problems/maximum-subarray/"
+        },
+        {
+          "title": "Maximum Product Subarray",
+          "url": "https://leetcode.com/problems/maximum-product-subarray/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d81a"
+    },
+    {
+      "title": "030. Two Pointers",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/030.mp4",
+      "duration": 35,
+      "notes": "Pointers from both ends (sorted data) or two speeds in one direction.\nUsed for pair sum, remove duplicates, partition, merge.\nSort first when order does not matter.\nO(n) after sorting.",
+      "logic": {
+        "problem": "Find a pair with a given sum in a sorted array.",
+        "thinking": "Checking all pairs is O(n^2). Sorted order tells which pointer to move.",
+        "pattern": "Two Pointers",
+        "logic": "Sum too small → move left; too big → move right.",
+        "approach": "1. l = 0, r = n-1.\n2. Compare the sum with target.\n3. Move one pointer.",
+        "code": "int l = 0, r = n - 1;\nwhile (l < r) {\n  int s = a[l] + a[r];\n  if (s == t) return {l, r};\n  s < t ? l++ : r--;\n}"
+      },
+      "problems": [
+        {
+          "title": "Two Sum II - Input Array Is Sorted",
+          "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"
+        },
+        {
+          "title": "3Sum",
+          "url": "https://leetcode.com/problems/3sum/"
+        },
+        {
+          "title": "Container with Most Water",
+          "url": "https://leetcode.com/problems/container-with-most-water/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d81b"
+    },
+    {
+      "title": "031. Sliding Window: Fixed Size",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/031.mp4",
+      "duration": 25,
+      "notes": "Window of exactly k elements.\nAdd the new element, remove the one that left.\nReplaces O(n·k) with O(n).",
+      "logic": {
+        "problem": "Maximum sum of k consecutive elements.",
+        "thinking": "Neighbouring windows share k-1 elements.",
+        "pattern": "Sliding Window (fixed)",
+        "logic": "sum += a[i] - a[i-k].",
+        "approach": "1. Sum the first k.\n2. Slide one step at a time.\n3. Track the best.",
+        "code": "long long s = accumulate(a.begin(), a.begin() + k, 0LL), best = s;\nfor (int i = k; i < n; i++) { s += a[i] - a[i - k]; best = max(best, s); }"
+      },
+      "problems": [
+        {
+          "title": "Maximum Average Subarray I",
+          "url": "https://leetcode.com/problems/maximum-average-subarray-i/"
+        },
+        {
+          "title": "Contains Duplicate II",
+          "url": "https://leetcode.com/problems/contains-duplicate-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d81c"
+    },
+    {
+      "title": "032. Sliding Window: Variable Size",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/032.mp4",
+      "duration": 40,
+      "notes": "Grow right, shrink left while the window is invalid.\nUse it for \"longest/shortest subarray with a condition\".\nTrack state in a map or counter.\nEach element enters and leaves once: O(n).",
+      "logic": {
+        "problem": "Longest substring without repeating letters.",
+        "thinking": "Brute force checks all substrings; windows share most letters.",
+        "pattern": "Sliding Window (variable)",
+        "logic": "If invalid, move left until valid.",
+        "approach": "1. Move r, add s[r].\n2. While repeated, move l.\n3. Update the max length.",
+        "code": "vector<int> last(256, -1); int l = 0, best = 0;\nfor (int r = 0; r < n; r++) {\n  l = max(l, last[s[r]] + 1);\n  last[s[r]] = r;\n  best = max(best, r - l + 1);\n}"
+      },
+      "problems": [
+        {
+          "title": "Longest Substring Without Repeating Characters",
+          "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+        },
+        {
+          "title": "Minimum Size Subarray Sum",
+          "url": "https://leetcode.com/problems/minimum-size-subarray-sum/"
+        },
+        {
+          "title": "Longest Repeating Character Replacement",
+          "url": "https://leetcode.com/problems/longest-repeating-character-replacement/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d81d"
+    },
+    {
+      "title": "033. Hashing: Frequency Counting",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/033.mp4",
+      "duration": 25,
+      "notes": "Count with unordered_map or an array of size 26 / 256.\nPatterns: majority, anagram, top-k, first unique.\nAnti-hash tests can slow unordered_map; use map or a custom hash in contests.",
+      "logic": {
+        "problem": "Find the element that appears more than n/2 times.",
+        "thinking": "Counting works, but there is also a voting trick.",
+        "pattern": "Frequency map",
+        "logic": "Count everything, then read the answer.",
+        "approach": "1. cnt[x]++ for each x.\n2. Pick the key with the largest count.",
+        "code": "unordered_map<int,int> cnt;\nfor (int x : a) cnt[x]++;"
+      },
+      "problems": [
+        {
+          "title": "Top K Frequent Elements",
+          "url": "https://leetcode.com/problems/top-k-frequent-elements/"
+        },
+        {
+          "title": "Majority Element",
+          "url": "https://leetcode.com/problems/majority-element/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d81e"
+    },
+    {
+      "title": "034. Subarray Sum with Hashing",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/034.mp4",
+      "duration": 35,
+      "notes": "If pre[j] - pre[i] = k then the subarray (i, j] sums to k.\nStore how often each prefix sum has occurred.\nSeed with {0: 1} for subarrays starting at index 0.\nWorks with negatives, unlike sliding window.",
+      "logic": {
+        "problem": "Count subarrays with sum k.",
+        "thinking": "Sliding window fails with negatives.",
+        "pattern": "Prefix sum + hash map",
+        "logic": "Look for pre - k among earlier prefixes.",
+        "approach": "1. map[0] = 1.\n2. pre += x.\n3. ans += map[pre - k]; map[pre]++.",
+        "code": "unordered_map<long long,int> m; m[0] = 1;\nlong long pre = 0; int ans = 0;\nfor (int x : a) { pre += x; ans += m[pre - k]; m[pre]++; }"
+      },
+      "problems": [
+        {
+          "title": "Subarray Sum Equals K",
+          "url": "https://leetcode.com/problems/subarray-sum-equals-k/"
+        },
+        {
+          "title": "Continuous Subarray Sum",
+          "url": "https://leetcode.com/problems/continuous-subarray-sum/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d81f"
+    },
+    {
+      "title": "035. Elementary Sorting",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/035.mp4",
+      "duration": 30,
+      "notes": "Bubble: swap neighbours, O(n^2).\nSelection: pick the minimum, O(n^2).\nInsertion: grow a sorted prefix; fast on nearly sorted data.\nKnow them to understand stability and swaps; use std::sort in practice.",
+      "logic": {
+        "problem": "Sort a small array by hand.",
+        "thinking": "Insert each item into the sorted left part.",
+        "pattern": "Insertion sort",
+        "logic": "Shift larger items right, then place the key.",
+        "approach": "1. key = a[i].\n2. Shift while a[j] > key.\n3. Place key.",
+        "code": "for (int i = 1; i < n; i++) {\n  int key = a[i], j = i - 1;\n  while (j >= 0 && a[j] > key) { a[j + 1] = a[j]; j--; }\n  a[j + 1] = key;\n}"
+      },
+      "problems": [
+        {
+          "title": "Insertion Sort List",
+          "url": "https://leetcode.com/problems/insertion-sort-list/"
+        },
+        {
+          "title": "Relative Sort Array",
+          "url": "https://leetcode.com/problems/relative-sort-array/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d820"
+    },
+    {
+      "title": "036. Merge Sort",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/036.mp4",
+      "duration": 40,
+      "notes": "Divide into halves, sort, merge. Always O(n log n), stable, O(n) space.\nMerge two sorted arrays with two pointers.\nThe merge step can also count inversions.\nFoundation for \"count smaller after self\".",
+      "logic": {
+        "problem": "Sort in guaranteed O(n log n).",
+        "thinking": "Sorting two halves is easier than the whole.",
+        "pattern": "Divide and conquer",
+        "logic": "Merge two sorted halves.",
+        "approach": "1. Split at mid.\n2. Sort both halves.\n3. Merge with two pointers.",
+        "code": "void ms(vector<int>& a, int l, int r) {\n  if (l >= r) return;\n  int m = (l + r) / 2;\n  ms(a, l, m); ms(a, m + 1, r);\n  inplace_merge(a.begin() + l, a.begin() + m + 1, a.begin() + r + 1);\n}"
+      },
+      "problems": [
+        {
+          "title": "Sort an Array",
+          "url": "https://leetcode.com/problems/sort-an-array/"
+        },
+        {
+          "title": "Count of Smaller Numbers After Self",
+          "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d821"
+    },
+    {
+      "title": "037. Quick Sort and Quick Select",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/037.mp4",
+      "duration": 40,
+      "notes": "Pick a pivot, partition, recurse. Average O(n log n), worst O(n^2).\nA random pivot avoids the worst case.\nQuick select finds the k-th element in O(n) average.",
+      "logic": {
+        "problem": "Find the k-th largest without sorting everything.",
+        "thinking": "Partition tells the final position of the pivot.",
+        "pattern": "Partition",
+        "logic": "Recurse only into the side holding the answer.",
+        "approach": "1. Choose a random pivot.\n2. Partition around it.\n3. Go left or right.",
+        "code": "nth_element(a.begin(), a.begin() + k, a.end());"
+      },
+      "problems": [
+        {
+          "title": "Kth Largest Element in An Array",
+          "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/"
+        },
+        {
+          "title": "Wiggle Sort II",
+          "url": "https://leetcode.com/problems/wiggle-sort-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d822"
+    },
+    {
+      "title": "038. Counting Sort and Heap Sort",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/038.mp4",
+      "duration": 30,
+      "notes": "Counting sort: O(n + range) for small integer ranges.\nHeap sort: build a heap, pop repeatedly, O(n log n), O(1) extra space.\nRadix sort extends counting sort to big numbers.",
+      "logic": {
+        "problem": "Sort numbers between 0 and 1000 fast.",
+        "thinking": "A small range allows direct counting.",
+        "pattern": "Counting sort",
+        "logic": "Count each value, then rewrite in order.",
+        "approach": "1. cnt[x]++.\n2. Output each value cnt times.",
+        "code": "vector<int> cnt(1001);\nfor (int x : a) cnt[x]++;"
+      },
+      "problems": [
+        {
+          "title": "Maximum Gap",
+          "url": "https://leetcode.com/problems/maximum-gap/"
+        },
+        {
+          "title": "H-Index",
+          "url": "https://leetcode.com/problems/h-index/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d823"
+    },
+    {
+      "title": "039. Dutch National Flag and Partitioning",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/039.mp4",
+      "duration": 30,
+      "notes": "Three-way partition with three pointers: low, mid, high.\nSort 0/1/2 in one pass, O(1) space.\nSame idea as the quick sort partition.",
+      "logic": {
+        "problem": "Sort an array of 0s, 1s and 2s.",
+        "thinking": "Only three values exist; a single pass can place them.",
+        "pattern": "Three pointers",
+        "logic": "0 goes left, 2 goes right, 1 stays.",
+        "approach": "1. lo = mid = 0, hi = n-1.\n2. Swap by the value of a[mid].",
+        "code": "int lo = 0, mid = 0, hi = n - 1;\nwhile (mid <= hi) {\n  if (a[mid] == 0) swap(a[lo++], a[mid++]);\n  else if (a[mid] == 1) mid++;\n  else swap(a[mid], a[hi--]);\n}"
+      },
+      "problems": [
+        {
+          "title": "Sort Colors",
+          "url": "https://leetcode.com/problems/sort-colors/"
+        },
+        {
+          "title": "Partition Labels",
+          "url": "https://leetcode.com/problems/partition-labels/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d824"
+    },
+    {
+      "title": "040. Matrix Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/040.mp4",
+      "duration": 35,
+      "notes": "Spiral: four boundaries top, bottom, left, right.\nRotate 90°: transpose, then reverse each row.\nSearch a sorted matrix from the top-right corner in O(r + c).\nMark zeros using the first row and column for O(1) space.",
+      "logic": {
+        "problem": "Rotate an n×n matrix by 90°.",
+        "thinking": "Rotation = transpose + mirror.",
+        "pattern": "Matrix transforms",
+        "logic": "Break a hard move into two easy ones.",
+        "approach": "1. Transpose.\n2. Reverse every row.",
+        "code": "for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++) swap(g[i][j], g[j][i]);\nfor (auto& row : g) reverse(row.begin(), row.end());"
+      },
+      "problems": [
+        {
+          "title": "Spiral Matrix",
+          "url": "https://leetcode.com/problems/spiral-matrix/"
+        },
+        {
+          "title": "Rotate Image",
+          "url": "https://leetcode.com/problems/rotate-image/"
+        },
+        {
+          "title": "Search a 2d Matrix",
+          "url": "https://leetcode.com/problems/search-a-2d-matrix/"
+        },
+        {
+          "title": "Set Matrix Zeroes",
+          "url": "https://leetcode.com/problems/set-matrix-zeroes/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d825"
+    },
+    {
+      "title": "041. String Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/041.mp4",
+      "duration": 35,
+      "notes": "Palindrome check with two pointers.\nAnagram: compare sorted strings or counts.\nReverse words: split, reverse, join.\nLongest palindromic substring: expand around each centre in O(n^2).",
+      "logic": {
+        "problem": "Longest palindromic substring.",
+        "thinking": "Every palindrome has a centre.",
+        "pattern": "Expand around centre",
+        "logic": "Try each centre and grow outwards.",
+        "approach": "1. For each i, try odd and even centres.\n2. Expand while equal.\n3. Track the longest.",
+        "code": "auto grow = [&](int l, int r) {\n  while (l >= 0 && r < n && s[l] == s[r]) l--, r++;\n  return r - l - 1;\n};"
+      },
+      "problems": [
+        {
+          "title": "Longest Palindromic Substring",
+          "url": "https://leetcode.com/problems/longest-palindromic-substring/"
+        },
+        {
+          "title": "Reverse Words in a String",
+          "url": "https://leetcode.com/problems/reverse-words-in-a-string/"
+        },
+        {
+          "title": "Longest Common Prefix",
+          "url": "https://leetcode.com/problems/longest-common-prefix/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d826"
+    },
+    {
+      "title": "042. KMP and Rabin-Karp",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/042.mp4",
+      "duration": 45,
+      "notes": "KMP: the LPS array stores the longest proper prefix that is also a suffix.\nSearch in O(n + m) without going back in the text.\nRabin-Karp: rolling hash of the window, compare hashes first.\nUse a modulus and verify matches to avoid collisions.",
+      "logic": {
+        "problem": "Find a pattern in a text quickly.",
+        "thinking": "After a mismatch, part of the pattern is already matched.",
+        "pattern": "KMP",
+        "logic": "Reuse matched prefixes using LPS.",
+        "approach": "1. Build LPS.\n2. Walk text and pattern.\n3. On mismatch jump j = lps[j-1].",
+        "code": "vector<int> lps(m, 0);\nfor (int i = 1, j = 0; i < m; i++) {\n  while (j && p[i] != p[j]) j = lps[j - 1];\n  if (p[i] == p[j]) j++;\n  lps[i] = j;\n}"
+      },
+      "problems": [
+        {
+          "title": "Find the Index of the First Occurrence in a String",
+          "url": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/"
+        },
+        {
+          "title": "Repeated Substring Pattern",
+          "url": "https://leetcode.com/problems/repeated-substring-pattern/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d827"
+    },
+    {
+      "title": "043. Binary Search Basics",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/043.mp4",
+      "duration": 30,
+      "notes": "Needs sorted or monotonic data, O(log n).\nUse mid = lo + (hi - lo) / 2 to avoid overflow.\nDecide: closed [lo, hi] or half-open [lo, hi).\nLoop invariant: the answer is always inside [lo, hi].",
+      "logic": {
+        "problem": "Find x in a sorted array.",
+        "thinking": "Each check removes half of the candidates.",
+        "pattern": "Binary Search",
+        "logic": "Compare mid, discard half.",
+        "approach": "1. lo = 0, hi = n-1.\n2. Take mid and compare.\n3. Shrink.",
+        "code": "int lo = 0, hi = n - 1;\nwhile (lo <= hi) {\n  int mid = lo + (hi - lo) / 2;\n  if (a[mid] == x) return mid;\n  a[mid] < x ? lo = mid + 1 : hi = mid - 1;\n}\nreturn -1;"
+      },
+      "problems": [
+        {
+          "title": "Binary Search",
+          "url": "https://leetcode.com/problems/binary-search/"
+        },
+        {
+          "title": "Search Insert Position",
+          "url": "https://leetcode.com/problems/search-insert-position/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d828"
+    },
+    {
+      "title": "044. Binary Search Variations",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/044.mp4",
+      "duration": 35,
+      "notes": "First occurrence = lower_bound; last = upper_bound - 1.\nCount of x = upper_bound - lower_bound.\nFloor and ceil of x.\nDo not stop when you find x: keep searching one side.",
+      "logic": {
+        "problem": "First position where a[i] >= x.",
+        "thinking": "Answers go no, no, yes, yes.",
+        "pattern": "Boundary search",
+        "logic": "If mid is good, keep it and go left.",
+        "approach": "1. lo = 0, hi = n.\n2. If a[mid] >= x, hi = mid, else lo = mid + 1.\n3. Answer is lo.",
+        "code": "int lo = 0, hi = n;\nwhile (lo < hi) {\n  int mid = lo + (hi - lo) / 2;\n  if (a[mid] >= x) hi = mid; else lo = mid + 1;\n}"
+      },
+      "problems": [
+        {
+          "title": "Find First and Last Position of Element in Sorted Array",
+          "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/"
+        },
+        {
+          "title": "First Bad Version",
+          "url": "https://leetcode.com/problems/first-bad-version/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d829"
+    },
+    {
+      "title": "045. Binary Search on Rotated Arrays",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/045.mp4",
+      "duration": 35,
+      "notes": "One half of a rotated sorted array is always sorted.\nDecide which half is sorted, then check if x is inside it.\nMinimum element: compare a[mid] with a[hi].\nDuplicates may need a linear step.",
+      "logic": {
+        "problem": "Search in a rotated sorted array.",
+        "thinking": "Sorted half = reliable half.",
+        "pattern": "Binary Search on half",
+        "logic": "Test the sorted half first.",
+        "approach": "1. Find the sorted half.\n2. If x is in it, go there.\n3. Else go to the other half.",
+        "code": "if (a[lo] <= a[mid]) {\n  if (a[lo] <= x && x < a[mid]) hi = mid - 1; else lo = mid + 1;\n} else {\n  if (a[mid] < x && x <= a[hi]) lo = mid + 1; else hi = mid - 1;\n}"
+      },
+      "problems": [
+        {
+          "title": "Search in Rotated Sorted Array",
+          "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/"
+        },
+        {
+          "title": "Find Minimum in Rotated Sorted Array",
+          "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d82a"
+    },
+    {
+      "title": "046. Binary Search on Answer",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/046.mp4",
+      "duration": 45,
+      "notes": "Search the answer range, not the array.\nNeeds a monotonic yes/no check: if X works, a bigger X also works.\nTemplate: feasible(mid) ? hi = mid : lo = mid + 1.\nExamples: Koko bananas, ship packages, split array.",
+      "logic": {
+        "problem": "Smallest eating speed that finishes in h hours.",
+        "thinking": "Higher speed never hurts, so answers go no, no, yes, yes.",
+        "pattern": "Binary Search on Answer",
+        "logic": "Write feasible(x), then search.",
+        "approach": "1. Set lo and hi.\n2. Test mid.\n3. Shrink toward the smallest feasible value.",
+        "code": "long long lo = 1, hi = maxPile;\nwhile (lo < hi) {\n  long long mid = (lo + hi) / 2;\n  feasible(mid) ? hi = mid : lo = mid + 1;\n}"
+      },
+      "problems": [
+        {
+          "title": "Koko Eating Bananas",
+          "url": "https://leetcode.com/problems/koko-eating-bananas/"
+        },
+        {
+          "title": "Capacity to Ship Packages Within D Days",
+          "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/"
+        },
+        {
+          "title": "Split Array Largest Sum",
+          "url": "https://leetcode.com/problems/split-array-largest-sum/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d82b"
+    },
+    {
+      "title": "047. Linked List Basics",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/047.mp4",
+      "duration": 35,
+      "notes": "struct Node { int val; Node* next; };\nInsert at head O(1); at tail O(n) without a tail pointer.\nDelete: link the previous node to the next one.\nUse a dummy head to avoid special cases.",
+      "logic": {
+        "problem": "Remove all nodes with value x.",
+        "thinking": "Deleting the head is a special case.",
+        "pattern": "Dummy node",
+        "logic": "A dummy before head makes all deletions alike.",
+        "approach": "1. dummy->next = head.\n2. Walk with a pointer.\n3. Skip nodes equal to x.",
+        "code": "ListNode dummy(0, head), *p = &dummy;\nwhile (p->next) {\n  if (p->next->val == x) p->next = p->next->next;\n  else p = p->next;\n}"
+      },
+      "problems": [
+        {
+          "title": "Design Linked List",
+          "url": "https://leetcode.com/problems/design-linked-list/"
+        },
+        {
+          "title": "Delete Node in a Linked List",
+          "url": "https://leetcode.com/problems/delete-node-in-a-linked-list/"
+        },
+        {
+          "title": "Remove Linked List Elements",
+          "url": "https://leetcode.com/problems/remove-linked-list-elements/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d82c"
+    },
+    {
+      "title": "048. Reverse a Linked List",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/048.mp4",
+      "duration": 35,
+      "notes": "Iterative: prev, cur, next.\nRecursive: reverse the rest, then fix the head.\nReverse a part [l, r], or in groups of k.\nAlways save next before changing it.",
+      "logic": {
+        "problem": "Reverse a list.",
+        "thinking": "Every pointer must point backwards.",
+        "pattern": "Pointer rewiring",
+        "logic": "Save next, flip, move on.",
+        "approach": "1. prev = null.\n2. nxt = cur->next.\n3. cur->next = prev, then advance.",
+        "code": "ListNode *prev = nullptr;\nwhile (cur) {\n  ListNode* nxt = cur->next;\n  cur->next = prev;\n  prev = cur; cur = nxt;\n}\nreturn prev;"
+      },
+      "problems": [
+        {
+          "title": "Reverse Linked List",
+          "url": "https://leetcode.com/problems/reverse-linked-list/"
+        },
+        {
+          "title": "Reverse Linked List II",
+          "url": "https://leetcode.com/problems/reverse-linked-list-ii/"
+        },
+        {
+          "title": "Reverse Nodes in K Group",
+          "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d82d"
+    },
+    {
+      "title": "049. Fast and Slow Pointers",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/049.mp4",
+      "duration": 35,
+      "notes": "Slow moves 1 step, fast moves 2.\nMiddle: when fast ends, slow is in the middle.\nCycle: if they meet, there is a cycle.\nCycle start: reset one pointer to head, move both by 1.",
+      "logic": {
+        "problem": "Detect a cycle without extra memory.",
+        "thinking": "A faster runner eventually laps a slower one.",
+        "pattern": "Floyd's cycle detection",
+        "logic": "The pointers meet only inside a cycle.",
+        "approach": "1. slow = fast = head.\n2. Move by 1 and 2.\n3. If equal, there is a cycle.",
+        "code": "while (fast && fast->next) {\n  slow = slow->next; fast = fast->next->next;\n  if (slow == fast) return true;\n}\nreturn false;"
+      },
+      "problems": [
+        {
+          "title": "Middle of the Linked List",
+          "url": "https://leetcode.com/problems/middle-of-the-linked-list/"
+        },
+        {
+          "title": "Linked List Cycle",
+          "url": "https://leetcode.com/problems/linked-list-cycle/"
+        },
+        {
+          "title": "Linked List Cycle II",
+          "url": "https://leetcode.com/problems/linked-list-cycle-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d82e"
+    },
+    {
+      "title": "050. Merge and Sort Linked Lists",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/050.mp4",
+      "duration": 35,
+      "notes": "Merge two sorted lists with a dummy node.\nSort a list: split with slow/fast, sort halves, merge, O(n log n).\nMerge sort suits lists because no random access is needed.",
+      "logic": {
+        "problem": "Merge two sorted lists.",
+        "thinking": "Always attach the smaller head.",
+        "pattern": "Two pointers",
+        "logic": "Compare heads, append the smaller.",
+        "approach": "1. dummy and tail.\n2. Compare a and b.\n3. Attach the rest.",
+        "code": "while (a && b) {\n  if (a->val < b->val) { tail->next = a; a = a->next; }\n  else { tail->next = b; b = b->next; }\n  tail = tail->next;\n}\ntail->next = a ? a : b;"
+      },
+      "problems": [
+        {
+          "title": "Merge Two Sorted Lists",
+          "url": "https://leetcode.com/problems/merge-two-sorted-lists/"
+        },
+        {
+          "title": "Sort List",
+          "url": "https://leetcode.com/problems/sort-list/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d82f"
+    },
+    {
+      "title": "051. Doubly and Circular Linked Lists",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/051.mp4",
+      "duration": 30,
+      "notes": "Doubly: prev and next pointers; delete a node in O(1) if you hold it.\nCircular: tail->next = head.\nCareful with four pointer updates on insert.\nstd::list is a doubly linked list.",
+      "logic": {
+        "problem": "Insert a node after a given node in a doubly list.",
+        "thinking": "Four links change.",
+        "pattern": "Pointer updates",
+        "logic": "Update the new node first, then the neighbours.",
+        "approach": "1. n->next = p->next; n->prev = p.\n2. If p->next, p->next->prev = n.\n3. p->next = n.",
+        "code": "n->next = p->next; n->prev = p;\nif (p->next) p->next->prev = n;\np->next = n;"
+      },
+      "problems": [
+        {
+          "title": "Flatten a Multilevel Doubly Linked List",
+          "url": "https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/"
+        },
+        {
+          "title": "Design Circular Deque",
+          "url": "https://leetcode.com/problems/design-circular-deque/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d830"
+    },
+    {
+      "title": "052. Linked List Interview Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/052.mp4",
+      "duration": 40,
+      "notes": "Remove n-th from end: two pointers n apart.\nIntersection: switch heads when you reach the end.\nPalindrome list: find the middle, reverse the half, compare.\nLRU cache: hash map + doubly linked list, O(1) get and put.",
+      "logic": {
+        "problem": "Design an LRU cache.",
+        "thinking": "Need O(1) lookup and O(1) reorder.",
+        "pattern": "Hash map + list",
+        "logic": "The map gives the node, the list gives the order.",
+        "approach": "1. Map key → list iterator.\n2. On use, move to front.\n3. On overflow, erase the back.",
+        "code": "list<pair<int,int>> dq;\nunordered_map<int, list<pair<int,int>>::iterator> mp;"
+      },
+      "problems": [
+        {
+          "title": "Remove Nth Node from End of List",
+          "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+        },
+        {
+          "title": "Intersection of Two Linked Lists",
+          "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/"
+        },
+        {
+          "title": "Palindrome Linked List",
+          "url": "https://leetcode.com/problems/palindrome-linked-list/"
+        },
+        {
+          "title": "LRU Cache",
+          "url": "https://leetcode.com/problems/lru-cache/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d831"
+    },
+    {
+      "title": "053. Stack and Its Applications",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/053.mp4",
+      "duration": 30,
+      "notes": "Stack = last in, first out; all operations O(1).\nUse cases: undo, brackets, DFS, recursion.\nImplement with a vector or array and a top index.\nCheck empty() before top().",
+      "logic": {
+        "problem": "Check if brackets are balanced.",
+        "thinking": "The latest opener must close first.",
+        "pattern": "Stack",
+        "logic": "A closer must match the top.",
+        "approach": "1. Push openers.\n2. On a closer, compare with top and pop.\n3. The stack must end empty.",
+        "code": "stack<char> st;\nfor (char c : s) {\n  if (c == '(' || c == '[' || c == '{') st.push(c);\n  else {\n    if (st.empty()) return false;\n    char t = st.top(); st.pop();\n    if ((c == ')' && t != '(') || (c == ']' && t != '[') || (c == '}' && t != '{')) return false;\n  }\n}\nreturn st.empty();"
+      },
+      "problems": [
+        {
+          "title": "Baseball Game",
+          "url": "https://leetcode.com/problems/baseball-game/"
+        },
+        {
+          "title": "Remove All Adjacent Duplicates in String",
+          "url": "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/"
+        },
+        {
+          "title": "Decode String",
+          "url": "https://leetcode.com/problems/decode-string/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d832"
+    },
+    {
+      "title": "054. Monotonic Stack",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/054.mp4",
+      "duration": 40,
+      "notes": "Keep the stack increasing or decreasing.\nNext greater / smaller element in O(n): each item is pushed and popped once.\nStore indexes to compute distances.\nUsed in histogram, stock span, trapping water.",
+      "logic": {
+        "problem": "Days until a warmer temperature.",
+        "thinking": "Compare each day with unresolved earlier days.",
+        "pattern": "Monotonic Stack",
+        "logic": "Pop days that just found their answer.",
+        "approach": "1. Stack of indexes with decreasing temperatures.\n2. While today > top, pop and fill the answer.\n3. Push today.",
+        "code": "for (int i = 0; i < n; i++) {\n  while (!st.empty() && t[i] > t[st.top()]) {\n    res[st.top()] = i - st.top(); st.pop();\n  }\n  st.push(i);\n}"
+      },
+      "problems": [
+        {
+          "title": "Daily Temperatures",
+          "url": "https://leetcode.com/problems/daily-temperatures/"
+        },
+        {
+          "title": "Next Greater Element I",
+          "url": "https://leetcode.com/problems/next-greater-element-i/"
+        },
+        {
+          "title": "Largest Rectangle in Histogram",
+          "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d833"
+    },
+    {
+      "title": "055. Expression Evaluation",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/055.mp4",
+      "duration": 35,
+      "notes": "Postfix (RPN): push numbers, apply an operator to the top two.\nInfix to postfix: operator stack and precedence.\nCalculator: one stack for numbers and a sign.\nMind the operand order for - and /.",
+      "logic": {
+        "problem": "Evaluate a postfix expression.",
+        "thinking": "An operator always acts on the last two numbers.",
+        "pattern": "Stack evaluation",
+        "logic": "Pop b, then a, compute a op b.",
+        "approach": "1. Read a token.\n2. Number → push.\n3. Operator → pop two, push the result."
+      },
+      "problems": [
+        {
+          "title": "Evaluate Reverse Polish Notation",
+          "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/"
+        },
+        {
+          "title": "Basic Calculator II",
+          "url": "https://leetcode.com/problems/basic-calculator-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d834"
+    },
+    {
+      "title": "056. Queue and Circular Queue",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/056.mp4",
+      "duration": 30,
+      "notes": "Queue = first in, first out.\nCircular queue: use (i + 1) % size to reuse space.\nFull vs empty: track the count.\nBFS is built on a queue.",
+      "logic": {
+        "problem": "Implement a fixed-size queue.",
+        "thinking": "A plain array wastes slots after pops.",
+        "pattern": "Circular buffer",
+        "logic": "Wrap indexes with modulo.",
+        "approach": "1. head, tail, count.\n2. push: arr[tail] = x; tail = (tail+1)%k.\n3. pop: head = (head+1)%k."
+      },
+      "problems": [
+        {
+          "title": "Design Circular Queue",
+          "url": "https://leetcode.com/problems/design-circular-queue/"
+        },
+        {
+          "title": "Number of Recent Calls",
+          "url": "https://leetcode.com/problems/number-of-recent-calls/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d835"
+    },
+    {
+      "title": "057. Monotonic Deque",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/057.mp4",
+      "duration": 40,
+      "notes": "The deque keeps indexes with decreasing values.\nFront = maximum of the current window.\nRemove from the front if out of the window, from the back if smaller.\nO(n) overall.",
+      "logic": {
+        "problem": "Maximum in every window of size k.",
+        "thinking": "Smaller items before a bigger one can never be the maximum.",
+        "pattern": "Monotonic Deque",
+        "logic": "Keep only useful candidates.",
+        "approach": "1. Pop back while smaller.\n2. Push i.\n3. Pop front if outside.\n4. The front is the answer.",
+        "code": "deque<int> dq;\nfor (int i = 0; i < n; i++) {\n  while (!dq.empty() && a[dq.back()] <= a[i]) dq.pop_back();\n  dq.push_back(i);\n  if (dq.front() <= i - k) dq.pop_front();\n  if (i >= k - 1) res.push_back(a[dq.front()]);\n}"
+      },
+      "problems": [
+        {
+          "title": "Sliding Window Maximum",
+          "url": "https://leetcode.com/problems/sliding-window-maximum/"
+        },
+        {
+          "title": "Shortest Subarray with Sum at Least K",
+          "url": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d836"
+    },
+    {
+      "title": "058. Stack and Queue Design Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/058.mp4",
+      "duration": 35,
+      "notes": "Min stack: store (value, minSoFar).\nQueue using two stacks: move items when the out-stack is empty.\nStack using queues: rotate after each push.\nAmortised O(1).",
+      "logic": {
+        "problem": "Get the minimum of a stack in O(1).",
+        "thinking": "Each state needs to remember its own minimum.",
+        "pattern": "Auxiliary information",
+        "logic": "Push the pair (x, min).",
+        "approach": "1. st.push({x, min(x, st.top().second)}).\n2. getMin = top.second.",
+        "code": "stack<pair<int,int>> st;"
+      },
+      "problems": [
+        {
+          "title": "Min Stack",
+          "url": "https://leetcode.com/problems/min-stack/"
+        },
+        {
+          "title": "Implement Stack Using Queues",
+          "url": "https://leetcode.com/problems/implement-stack-using-queues/"
+        },
+        {
+          "title": "Online Stock Span",
+          "url": "https://leetcode.com/problems/online-stock-span/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d837"
+    },
+    {
+      "title": "059. Subsets and Subsequences",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/059.mp4",
+      "duration": 35,
+      "notes": "n items → 2^n subsets.\nPick or skip each item.\nFor duplicates: sort, skip equal items at the same level.\nSame idea for subsequences.",
+      "logic": {
+        "problem": "List all subsets.",
+        "thinking": "Every item has two choices: take or skip.",
+        "pattern": "Backtracking (take / skip)",
+        "logic": "Choose, recurse, undo.",
+        "approach": "1. If i == n, store the path.\n2. Take a[i], recurse.\n3. Undo, skip, recurse.",
+        "code": "void go(int i) {\n  if (i == n) { res.push_back(path); return; }\n  path.push_back(a[i]); go(i + 1);\n  path.pop_back(); go(i + 1);\n}"
+      },
+      "problems": [
+        {
+          "title": "Subsets",
+          "url": "https://leetcode.com/problems/subsets/"
+        },
+        {
+          "title": "Subsets II",
+          "url": "https://leetcode.com/problems/subsets-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d838"
+    },
+    {
+      "title": "060. Permutations",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/060.mp4",
+      "duration": 35,
+      "notes": "n! arrangements.\nUse a used[] array, or swap elements in place.\nDuplicates: sort and skip repeats at the same level.\nnext_permutation is a shortcut for sorted input.",
+      "logic": {
+        "problem": "List all permutations.",
+        "thinking": "Each position takes any unused item.",
+        "pattern": "Backtracking (fill positions)",
+        "logic": "Pick an unused element for the next slot.",
+        "approach": "1. If the path is full, store it.\n2. Try each unused item.\n3. Undo.",
+        "code": "void go() {\n  if ((int)path.size() == n) { res.push_back(path); return; }\n  for (int i = 0; i < n; i++) {\n    if (used[i]) continue;\n    used[i] = 1; path.push_back(a[i]); go();\n    path.pop_back(); used[i] = 0;\n  }\n}"
+      },
+      "problems": [
+        {
+          "title": "Permutations",
+          "url": "https://leetcode.com/problems/permutations/"
+        },
+        {
+          "title": "Permutations II",
+          "url": "https://leetcode.com/problems/permutations-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d839"
+    },
+    {
+      "title": "061. Combination Sum",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/061.mp4",
+      "duration": 35,
+      "notes": "Start the loop from the current index to avoid duplicates.\nReuse allowed: recurse with the same index. Not allowed: i + 1.\nPrune when the remaining sum < 0.\nSort to skip equal items.",
+      "logic": {
+        "problem": "Find all combinations that add to a target.",
+        "thinking": "Order should not matter, so move forward only.",
+        "pattern": "Backtracking with start index",
+        "logic": "Loop from start and prune.",
+        "approach": "1. If rem == 0, store.\n2. For i from start, take a[i].\n3. Recurse and undo.",
+        "code": "void go(int s, int rem) {\n  if (rem == 0) { res.push_back(path); return; }\n  for (int i = s; i < n && a[i] <= rem; i++) {\n    path.push_back(a[i]); go(i, rem - a[i]); path.pop_back();\n  }\n}"
+      },
+      "problems": [
+        {
+          "title": "Combination Sum",
+          "url": "https://leetcode.com/problems/combination-sum/"
+        },
+        {
+          "title": "Combination Sum II",
+          "url": "https://leetcode.com/problems/combination-sum-ii/"
+        },
+        {
+          "title": "Combinations",
+          "url": "https://leetcode.com/problems/combinations/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d83a"
+    },
+    {
+      "title": "062. N-Queens",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/062.mp4",
+      "duration": 40,
+      "notes": "Place one queen per row.\nTrack columns and both diagonals: r - c and r + c.\nPruning makes it practical for n up to 12.\nThe same idea solves Sudoku.",
+      "logic": {
+        "problem": "Place n queens so none attack each other.",
+        "thinking": "Only one queen per row is possible.",
+        "pattern": "Constraint backtracking",
+        "logic": "Check column and diagonals in O(1).",
+        "approach": "1. Go row by row.\n2. Try each free column.\n3. Mark, recurse, unmark.",
+        "code": "void go(int r) {\n  if (r == n) { cnt++; return; }\n  for (int c = 0; c < n; c++) {\n    if (col[c] || d1[r - c + n] || d2[r + c]) continue;\n    col[c] = d1[r - c + n] = d2[r + c] = 1; go(r + 1);\n    col[c] = d1[r - c + n] = d2[r + c] = 0;\n  }\n}"
+      },
+      "problems": [
+        {
+          "title": "N-Queens",
+          "url": "https://leetcode.com/problems/n-queens/"
+        },
+        {
+          "title": "N-Queens II",
+          "url": "https://leetcode.com/problems/n-queens-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d83b"
+    },
+    {
+      "title": "063. Grid and String Backtracking",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/063.mp4",
+      "duration": 40,
+      "notes": "Word search: DFS in 4 directions, mark visited, unmark on return.\nPalindrome partitioning: cut at every position that forms a palindrome.\nGenerate parentheses: add \"(\" if open < n, \")\" if close < open.\nAlways undo the change.",
+      "logic": {
+        "problem": "Does a word exist in a grid?",
+        "thinking": "Try every start cell and follow matching neighbours.",
+        "pattern": "Grid DFS + backtracking",
+        "logic": "Mark the cell, explore, restore it.",
+        "approach": "1. Match the current letter.\n2. Mark visited.\n3. Try four directions.\n4. Restore."
+      },
+      "problems": [
+        {
+          "title": "Word Search",
+          "url": "https://leetcode.com/problems/word-search/"
+        },
+        {
+          "title": "Palindrome Partitioning",
+          "url": "https://leetcode.com/problems/palindrome-partitioning/"
+        },
+        {
+          "title": "Generate Parentheses",
+          "url": "https://leetcode.com/problems/generate-parentheses/"
+        },
+        {
+          "title": "Letter Combinations of a Phone Number",
+          "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d83c"
+    },
+    {
+      "title": "064. Binary Tree Basics and Traversals",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/064.mp4",
+      "duration": 35,
+      "notes": "struct TreeNode { int val; TreeNode *left, *right; };\nPreorder: root, left, right. Inorder: left, root, right. Postorder: left, right, root.\nRecursion depth = tree height.\nA skewed tree has height n.",
+      "logic": {
+        "problem": "Visit all nodes of a BST in sorted order.",
+        "thinking": "Inorder visits left, then the node, then right.",
+        "pattern": "DFS traversals",
+        "logic": "Pick the order that matches the question.",
+        "approach": "1. Base case: null returns.\n2. Recurse left.\n3. Visit.\n4. Recurse right.",
+        "code": "void inorder(TreeNode* n) {\n  if (!n) return;\n  inorder(n->left); cout << n->val << \" \"; inorder(n->right);\n}"
+      },
+      "problems": [
+        {
+          "title": "Binary Tree Inorder Traversal",
+          "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/"
+        },
+        {
+          "title": "Binary Tree Preorder Traversal",
+          "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/"
+        },
+        {
+          "title": "Binary Tree Postorder Traversal",
+          "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d83d"
+    },
+    {
+      "title": "065. Iterative Tree Traversals",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/065.mp4",
+      "duration": 35,
+      "notes": "Use your own stack to avoid recursion depth limits.\nInorder: go left as far as possible, pop, visit, go right.\nPreorder: push right then left.\nPostorder: reverse of (root, right, left).",
+      "logic": {
+        "problem": "Do an inorder traversal without recursion.",
+        "thinking": "The call stack can be replaced by an explicit stack.",
+        "pattern": "Explicit stack",
+        "logic": "Go left, pop, go right.",
+        "approach": "1. Push the left chain.\n2. Pop and visit.\n3. Move to the right child.",
+        "code": "stack<TreeNode*> st; TreeNode* cur = root;\nwhile (cur || !st.empty()) {\n  while (cur) { st.push(cur); cur = cur->left; }\n  cur = st.top(); st.pop();\n  res.push_back(cur->val); cur = cur->right;\n}"
+      },
+      "problems": [
+        {
+          "title": "Binary Tree Inorder Traversal",
+          "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/"
+        },
+        {
+          "title": "Same Tree",
+          "url": "https://leetcode.com/problems/same-tree/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d83e"
+    },
+    {
+      "title": "066. Level Order and Tree Views",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/066.mp4",
+      "duration": 35,
+      "notes": "BFS with a queue; process level by level using the queue size.\nRight view: last node of each level.\nZigzag: reverse alternate levels.\nVertical order: BFS with a column index.",
+      "logic": {
+        "problem": "Print nodes level by level.",
+        "thinking": "Nodes at the same depth are visited together.",
+        "pattern": "BFS by level",
+        "logic": "Freeze the queue size for each level.",
+        "approach": "1. Push the root.\n2. n = q.size().\n3. Process n nodes, push their children.",
+        "code": "queue<TreeNode*> q; q.push(root);\nwhile (!q.empty()) {\n  int n = q.size(); vector<int> level;\n  while (n--) {\n    auto x = q.front(); q.pop(); level.push_back(x->val);\n    if (x->left) q.push(x->left);\n    if (x->right) q.push(x->right);\n  }\n  res.push_back(level);\n}"
+      },
+      "problems": [
+        {
+          "title": "Binary Tree Level Order Traversal",
+          "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+        },
+        {
+          "title": "Binary Tree Right Side View",
+          "url": "https://leetcode.com/problems/binary-tree-right-side-view/"
+        },
+        {
+          "title": "Binary Tree Zigzag Level Order Traversal",
+          "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d83f"
+    },
+    {
+      "title": "067. Tree Recursion Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/067.mp4",
+      "duration": 40,
+      "notes": "Most tree answers combine the left answer and the right answer.\nHeight, diameter, balanced check, invert, symmetric.\nReturn one value, update a global for the other.\nComplexity is usually O(n).",
+      "logic": {
+        "problem": "Diameter of a binary tree.",
+        "thinking": "The longest path bends at some node.",
+        "pattern": "Post-order recursion",
+        "logic": "At each node: best = left height + right height.",
+        "approach": "1. Get heights from the children.\n2. Update the answer.\n3. Return 1 + max.",
+        "code": "int h(TreeNode* n) {\n  if (!n) return 0;\n  int l = h(n->left), r = h(n->right);\n  best = max(best, l + r);\n  return 1 + max(l, r);\n}"
+      },
+      "problems": [
+        {
+          "title": "Maximum Depth of Binary Tree",
+          "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+        },
+        {
+          "title": "Diameter of Binary Tree",
+          "url": "https://leetcode.com/problems/diameter-of-binary-tree/"
+        },
+        {
+          "title": "Balanced Binary Tree",
+          "url": "https://leetcode.com/problems/balanced-binary-tree/"
+        },
+        {
+          "title": "Invert Binary Tree",
+          "url": "https://leetcode.com/problems/invert-binary-tree/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d840"
+    },
+    {
+      "title": "068. LCA and Path Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/068.mp4",
+      "duration": 40,
+      "notes": "LCA: if left and right both return a node, the current node is the LCA.\nPath sum: subtract while moving down.\nMax path sum: the best path may bend; return the better single side.\nRoot-to-leaf paths use backtracking.",
+      "logic": {
+        "problem": "Find the lowest common ancestor of p and q.",
+        "thinking": "It is the first node that sees p on one side and q on the other.",
+        "pattern": "Post-order search",
+        "logic": "Return the node when it is p or q.",
+        "approach": "1. Null, p or q → return the node.\n2. Search both sides.\n3. Both non-null → this node.",
+        "code": "TreeNode* lca(TreeNode* n, TreeNode* p, TreeNode* q) {\n  if (!n || n == p || n == q) return n;\n  auto l = lca(n->left, p, q), r = lca(n->right, p, q);\n  return l && r ? n : (l ? l : r);\n}"
+      },
+      "problems": [
+        {
+          "title": "Lowest Common Ancestor of a Binary Tree",
+          "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/"
+        },
+        {
+          "title": "Path Sum",
+          "url": "https://leetcode.com/problems/path-sum/"
+        },
+        {
+          "title": "Binary Tree Maximum Path Sum",
+          "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d841"
+    },
+    {
+      "title": "069. Construct Tree from Traversals",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/069.mp4",
+      "duration": 40,
+      "notes": "Preorder gives the root first; inorder splits left and right.\nPostorder gives the root last.\nUse a map from value to inorder index for O(n).\nPreorder + postorder alone cannot give a unique tree.",
+      "logic": {
+        "problem": "Rebuild a tree from preorder and inorder.",
+        "thinking": "The first preorder item is the root.",
+        "pattern": "Divide by root",
+        "logic": "Find the root in inorder; the left part is the left subtree.",
+        "approach": "1. root = pre[i++].\n2. Find root in inorder.\n3. Build left, then right."
+      },
+      "problems": [
+        {
+          "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+          "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
+        },
+        {
+          "title": "Construct Binary Tree from Inorder and Postorder Traversal",
+          "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d842"
+    },
+    {
+      "title": "070. BST Basics",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/070.mp4",
+      "duration": 35,
+      "notes": "Left < node < right, and inorder is sorted.\nSearch and insert take O(h); delete has three cases.\nDelete: leaf, one child, or two children (replace with the inorder successor).\nBalanced height is log n; skewed is n.",
+      "logic": {
+        "problem": "Insert a value into a BST.",
+        "thinking": "Walk left or right until you find a null spot.",
+        "pattern": "BST navigation",
+        "logic": "Smaller goes left, larger goes right.",
+        "approach": "1. If null, create a node.\n2. Compare and recurse.\n3. Return the root.",
+        "code": "TreeNode* ins(TreeNode* n, int x) {\n  if (!n) return new TreeNode(x);\n  if (x < n->val) n->left = ins(n->left, x); else n->right = ins(n->right, x);\n  return n;\n}"
+      },
+      "problems": [
+        {
+          "title": "Search in a Binary Search Tree",
+          "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/"
+        },
+        {
+          "title": "Insert Into a Binary Search Tree",
+          "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/"
+        },
+        {
+          "title": "Delete Node in a Bst",
+          "url": "https://leetcode.com/problems/delete-node-in-a-bst/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d843"
+    },
+    {
+      "title": "071. BST Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/071.mp4",
+      "duration": 35,
+      "notes": "Validate with a (low, high) range for each node.\nk-th smallest: inorder traversal and count.\nLCA in a BST: go left or right by value.\nFloor, ceil, successor, predecessor.",
+      "logic": {
+        "problem": "Check if a tree is a BST.",
+        "thinking": "Comparing only with the parent is not enough.",
+        "pattern": "Range check",
+        "logic": "Pass the allowed range down.",
+        "approach": "1. Start with (-inf, +inf).\n2. Left child: update high.\n3. Right child: update low.",
+        "code": "bool ok(TreeNode* n, long long lo, long long hi) {\n  if (!n) return true;\n  if (n->val <= lo || n->val >= hi) return false;\n  return ok(n->left, lo, n->val) && ok(n->right, n->val, hi);\n}"
+      },
+      "problems": [
+        {
+          "title": "Validate Binary Search Tree",
+          "url": "https://leetcode.com/problems/validate-binary-search-tree/"
+        },
+        {
+          "title": "Kth Smallest Element in a Bst",
+          "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/"
+        },
+        {
+          "title": "Lowest Common Ancestor of a Binary Search Tree",
+          "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d844"
+    },
+    {
+      "title": "072. Segment Tree",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/072.mp4",
+      "duration": 50,
+      "notes": "Answers range queries and point updates in O(log n).\nStore the answer of each segment (sum, min, max).\nSize 4n array; node i has children 2i and 2i+1.\nLazy propagation handles range updates.",
+      "logic": {
+        "problem": "Many range-sum queries with updates.",
+        "thinking": "Prefix sums break when values change.",
+        "pattern": "Segment Tree",
+        "logic": "Split into halves, store each half's answer.",
+        "approach": "1. Build recursively.\n2. Query: combine overlapping segments.\n3. Update: change a leaf, recompute parents.",
+        "code": "void build(int i, int l, int r) {\n  if (l == r) { t[i] = a[l]; return; }\n  int m = (l + r) / 2;\n  build(2 * i, l, m); build(2 * i + 1, m + 1, r);\n  t[i] = t[2 * i] + t[2 * i + 1];\n}"
+      },
+      "problems": [
+        {
+          "title": "Range Sum Query Mutable",
+          "url": "https://leetcode.com/problems/range-sum-query-mutable/"
+        },
+        {
+          "title": "My Calendar I",
+          "url": "https://leetcode.com/problems/my-calendar-i/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d845"
+    },
+    {
+      "title": "073. Fenwick Tree (BIT)",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/073.mp4",
+      "duration": 35,
+      "notes": "Shorter than a segment tree for prefix sums.\ni & -i is the lowest set bit.\nupdate(i, d): i += i & -i. query(i): i -= i & -i.\n1-indexed; O(log n).",
+      "logic": {
+        "problem": "Count items smaller than x seen so far.",
+        "thinking": "You need prefix counts that change over time.",
+        "pattern": "Binary Indexed Tree",
+        "logic": "Each cell stores a block of the prefix.",
+        "approach": "1. Compress the values.\n2. Query the count, then update.",
+        "code": "void upd(int i, int d) { for (; i <= n; i += i & -i) bit[i] += d; }\nint qry(int i) { int s = 0; for (; i > 0; i -= i & -i) s += bit[i]; return s; }"
+      },
+      "problems": [
+        {
+          "title": "Count of Smaller Numbers After Self",
+          "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/"
+        },
+        {
+          "title": "Reverse Pairs",
+          "url": "https://leetcode.com/problems/reverse-pairs/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d846"
+    },
+    {
+      "title": "074. Trie",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/074.mp4",
+      "duration": 40,
+      "notes": "A tree of characters; each path = a prefix.\nInsert, search and prefix search in O(word length).\nNode: array of 26 children + end flag.\nGreat for autocomplete and word games.",
+      "logic": {
+        "problem": "Check if a word or prefix exists.",
+        "thinking": "A hash set cannot answer prefix questions quickly.",
+        "pattern": "Trie",
+        "logic": "Share common prefixes.",
+        "approach": "1. Walk letter by letter.\n2. Create missing nodes on insert.\n3. Mark the end.",
+        "code": "struct Trie { Trie* ch[26] = {}; bool end = false; };\nvoid insert(Trie* r, const string& w) {\n  for (char c : w) { if (!r->ch[c - 'a']) r->ch[c - 'a'] = new Trie(); r = r->ch[c - 'a']; }\n  r->end = true;\n}"
+      },
+      "problems": [
+        {
+          "title": "Implement Trie Prefix Tree",
+          "url": "https://leetcode.com/problems/implement-trie-prefix-tree/"
+        },
+        {
+          "title": "Design Add and Search Words Data Structure",
+          "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/"
+        },
+        {
+          "title": "Word Search II",
+          "url": "https://leetcode.com/problems/word-search-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d847"
+    },
+    {
+      "title": "075. Tree Design: Serialize and Recover",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/075.mp4",
+      "duration": 40,
+      "notes": "Serialize with preorder and null markers.\nDeserialize by reading tokens in the same order.\nRecover a BST: the inorder has two swapped values.\nMorris traversal gives O(1) space traversal.",
+      "logic": {
+        "problem": "Turn a tree into a string and back.",
+        "thinking": "Null markers keep the shape.",
+        "pattern": "Preorder with nulls",
+        "logic": "The same order writes and reads.",
+        "approach": "1. Write val or \"#\".\n2. Recurse left, then right.\n3. Read in the same order."
+      },
+      "problems": [
+        {
+          "title": "Serialize and Deserialize Binary Tree",
+          "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"
+        },
+        {
+          "title": "Recover Binary Search Tree",
+          "url": "https://leetcode.com/problems/recover-binary-search-tree/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d848"
+    },
+    {
+      "title": "076. Heap Internals",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/076.mp4",
+      "duration": 30,
+      "notes": "A complete binary tree stored in an array.\nParent (i-1)/2, children 2i+1 and 2i+2.\nPush: add at the end, sift up. Pop: move the last to the root, sift down.\nBuild a heap in O(n) with heapify.",
+      "logic": {
+        "problem": "Get the minimum repeatedly.",
+        "thinking": "A heap gives the min in O(1) and updates in O(log n).",
+        "pattern": "Heap",
+        "logic": "Keep the heap property after each change.",
+        "approach": "1. Push at the end.\n2. Sift up.\n3. For pop, sift down."
+      },
+      "problems": [
+        {
+          "title": "Kth Smallest Element in a Sorted Matrix",
+          "url": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/"
+        },
+        {
+          "title": "Reorganize String",
+          "url": "https://leetcode.com/problems/reorganize-string/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d849"
+    },
+    {
+      "title": "077. Top K Problems",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/077.mp4",
+      "duration": 35,
+      "notes": "Top K largest: keep a min-heap of size K.\nTop K frequent: count, then heap.\nO(n log k) is better than sorting O(n log n).\nOr use quick select for O(n) average.",
+      "logic": {
+        "problem": "K closest points to the origin.",
+        "thinking": "You only need K items, not a full order.",
+        "pattern": "Bounded heap",
+        "logic": "Keep the K best; kick out the worst.",
+        "approach": "1. Push each item.\n2. If size > K, pop.\n3. The heap holds the answer.",
+        "code": "priority_queue<pair<int,int>> pq;\nfor (int i = 0; i < n; i++) {\n  pq.push({d[i], i});\n  if ((int)pq.size() > k) pq.pop();\n}"
+      },
+      "problems": [
+        {
+          "title": "K Closest Points to Origin",
+          "url": "https://leetcode.com/problems/k-closest-points-to-origin/"
+        },
+        {
+          "title": "Top K Frequent Words",
+          "url": "https://leetcode.com/problems/top-k-frequent-words/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d84a"
+    },
+    {
+      "title": "078. Merge K Lists and Median Stream",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/078.mp4",
+      "duration": 40,
+      "notes": "Merge K sorted lists with a min-heap of heads: O(N log K).\nMedian of a stream: max-heap for the lower half, min-heap for the upper half.\nKeep sizes equal or off by one.\nTask scheduling: greedy with a heap.",
+      "logic": {
+        "problem": "Running median of a stream.",
+        "thinking": "Sorting after every insert is too slow.",
+        "pattern": "Two heaps",
+        "logic": "The tops of two heaps hold the middle.",
+        "approach": "1. Push into low.\n2. Move the low top to high.\n3. Rebalance the sizes."
+      },
+      "problems": [
+        {
+          "title": "Merge K Sorted Lists",
+          "url": "https://leetcode.com/problems/merge-k-sorted-lists/"
+        },
+        {
+          "title": "Find Median from Data Stream",
+          "url": "https://leetcode.com/problems/find-median-from-data-stream/"
+        },
+        {
+          "title": "Task Scheduler",
+          "url": "https://leetcode.com/problems/task-scheduler/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d84b"
+    },
+    {
+      "title": "079. Graph Representation",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/079.mp4",
+      "duration": 30,
+      "notes": "Adjacency list: vector<int> g[n]; O(V + E) memory.\nAdjacency matrix: O(V^2) memory, O(1) edge check.\nWeighted: vector<pair<int,int>> g[n].\nDirected vs undirected: add one or two edges.",
+      "logic": {
+        "problem": "Store a graph with n nodes and m edges.",
+        "thinking": "Most graphs are sparse.",
+        "pattern": "Adjacency list",
+        "logic": "Store only the neighbours.",
+        "approach": "1. Read edges.\n2. g[u].push_back(v).\n3. For undirected, also g[v].push_back(u).",
+        "code": "vector<vector<int>> g(n);\nfor (auto& e : edges) { g[e[0]].push_back(e[1]); g[e[1]].push_back(e[0]); }"
+      },
+      "problems": [
+        {
+          "title": "Find If Path Exists in Graph",
+          "url": "https://leetcode.com/problems/find-if-path-exists-in-graph/"
+        },
+        {
+          "title": "Find the Town Judge",
+          "url": "https://leetcode.com/problems/find-the-town-judge/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d84c"
+    },
+    {
+      "title": "080. BFS",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/080.mp4",
+      "duration": 40,
+      "notes": "BFS visits nodes level by level using a queue.\nGives the shortest path in unweighted graphs.\nMark visited when you push, not when you pop.\nGrid BFS: four directions, bounds check.",
+      "logic": {
+        "problem": "Shortest path in an unweighted graph.",
+        "thinking": "Every edge has the same cost.",
+        "pattern": "BFS",
+        "logic": "The first time you reach a node is the shortest way.",
+        "approach": "1. Push the start, dist = 0.\n2. Pop and visit neighbours.\n3. dist[v] = dist[u] + 1.",
+        "code": "queue<int> q; q.push(s); dist[s] = 0;\nwhile (!q.empty()) {\n  int u = q.front(); q.pop();\n  for (int v : g[u]) if (dist[v] < 0) { dist[v] = dist[u] + 1; q.push(v); }\n}"
+      },
+      "problems": [
+        {
+          "title": "Rotting Oranges",
+          "url": "https://leetcode.com/problems/rotting-oranges/"
+        },
+        {
+          "title": "Shortest Path in Binary Matrix",
+          "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/"
+        },
+        {
+          "title": "Word Ladder",
+          "url": "https://leetcode.com/problems/word-ladder/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d84d"
+    },
+    {
+      "title": "081. DFS and Connected Components",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/081.mp4",
+      "duration": 40,
+      "notes": "DFS goes deep first; use recursion or a stack.\nCount components: start a DFS from each unvisited node.\nGrid DFS: flood fill, islands.\nTrack entry/exit times for later topics.",
+      "logic": {
+        "problem": "Count islands in a grid.",
+        "thinking": "Each island is one connected group.",
+        "pattern": "Flood fill",
+        "logic": "Visit a land cell, sink all connected cells.",
+        "approach": "1. Scan the cells.\n2. On land, count + 1 and DFS.\n3. DFS marks cells visited.",
+        "code": "void dfs(int r, int c) {\n  if (r < 0 || c < 0 || r >= R || c >= C || g[r][c] != '1') return;\n  g[r][c] = '0';\n  dfs(r + 1, c); dfs(r - 1, c); dfs(r, c + 1); dfs(r, c - 1);\n}"
+      },
+      "problems": [
+        {
+          "title": "Number of Islands",
+          "url": "https://leetcode.com/problems/number-of-islands/"
+        },
+        {
+          "title": "Flood Fill",
+          "url": "https://leetcode.com/problems/flood-fill/"
+        },
+        {
+          "title": "Number of Provinces",
+          "url": "https://leetcode.com/problems/number-of-provinces/"
+        },
+        {
+          "title": "Max Area of Island",
+          "url": "https://leetcode.com/problems/max-area-of-island/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d84e"
+    },
+    {
+      "title": "082. Cycle Detection",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/082.mp4",
+      "duration": 35,
+      "notes": "Undirected: DFS; if you meet a visited node that is not the parent → cycle.\nDirected: track the recursion stack (0 = new, 1 = in progress, 2 = done).\nOr use topological sort / DSU.\nCourse Schedule is a cycle question.",
+      "logic": {
+        "problem": "Can all courses be finished?",
+        "thinking": "Impossible exactly when the prerequisite graph has a cycle.",
+        "pattern": "Directed cycle detection",
+        "logic": "An edge to an in-progress node is a cycle.",
+        "approach": "1. state[u] = 1.\n2. If state[v] == 1, cycle.\n3. state[u] = 2.",
+        "code": "bool dfs(int u) {\n  state[u] = 1;\n  for (int v : g[u]) {\n    if (state[v] == 1) return true;\n    if (state[v] == 0 && dfs(v)) return true;\n  }\n  state[u] = 2; return false;\n}"
+      },
+      "problems": [
+        {
+          "title": "Course Schedule",
+          "url": "https://leetcode.com/problems/course-schedule/"
+        },
+        {
+          "title": "Redundant Connection",
+          "url": "https://leetcode.com/problems/redundant-connection/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d84f"
+    },
+    {
+      "title": "083. Topological Sort",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/083.mp4",
+      "duration": 35,
+      "notes": "A linear order of a DAG so every edge goes forward.\nKahn's algorithm: BFS using in-degrees.\nDFS version: push after finishing, then reverse.\nIf fewer than n nodes are output, there is a cycle.",
+      "logic": {
+        "problem": "Order tasks with dependencies.",
+        "thinking": "A task can start when all its prerequisites are done.",
+        "pattern": "Kahn's algorithm",
+        "logic": "Take nodes with in-degree 0.",
+        "approach": "1. Compute in-degrees.\n2. Queue the zero ones.\n3. Pop and reduce neighbours.",
+        "code": "while (!q.empty()) {\n  int u = q.front(); q.pop(); order.push_back(u);\n  for (int v : g[u]) if (--indeg[v] == 0) q.push(v);\n}"
+      },
+      "problems": [
+        {
+          "title": "Course Schedule II",
+          "url": "https://leetcode.com/problems/course-schedule-ii/"
+        },
+        {
+          "title": "Find Eventual Safe States",
+          "url": "https://leetcode.com/problems/find-eventual-safe-states/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d850"
+    },
+    {
+      "title": "084. Dijkstra's Algorithm",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/084.mp4",
+      "duration": 45,
+      "notes": "Shortest paths with non-negative weights.\nMin-heap of (distance, node); skip stale entries.\nO((V + E) log V).\nNot valid with negative edges.",
+      "logic": {
+        "problem": "Shortest path in a weighted graph.",
+        "thinking": "BFS counts edges, but edges now have costs.",
+        "pattern": "Greedy shortest path",
+        "logic": "Always expand the closest unsettled node.",
+        "approach": "1. dist[s] = 0, push.\n2. Pop the smallest.\n3. Relax each edge.",
+        "code": "priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;\npq.push({0, s}); dist[s] = 0;\nwhile (!pq.empty()) {\n  auto [d, u] = pq.top(); pq.pop();\n  if (d > dist[u]) continue;\n  for (auto [v, w] : g[u]) if (d + w < dist[v]) { dist[v] = d + w; pq.push({dist[v], v}); }\n}"
+      },
+      "problems": [
+        {
+          "title": "Network Delay Time",
+          "url": "https://leetcode.com/problems/network-delay-time/"
+        },
+        {
+          "title": "Path with Minimum Effort",
+          "url": "https://leetcode.com/problems/path-with-minimum-effort/"
+        },
+        {
+          "title": "Cheapest Flights Within K Stops",
+          "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d851"
+    },
+    {
+      "title": "085. Bellman-Ford and Floyd-Warshall",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/085.mp4",
+      "duration": 40,
+      "notes": "Bellman-Ford: relax all edges V-1 times; handles negative edges; detects negative cycles. O(VE).\nFloyd-Warshall: all pairs, O(V^3).\nfor k, for i, for j: d[i][j] = min(d[i][j], d[i][k] + d[k][j]).\nUse it for small V only.",
+      "logic": {
+        "problem": "Shortest path with negative edges.",
+        "thinking": "Dijkstra fails with negatives.",
+        "pattern": "Relaxation rounds",
+        "logic": "A shortest path has at most V-1 edges.",
+        "approach": "1. dist[s] = 0.\n2. Repeat V-1 times: relax every edge.\n3. One more round reveals a negative cycle.",
+        "code": "for (int k = 0; k < n; k++)\n  for (int i = 0; i < n; i++)\n    for (int j = 0; j < n; j++) d[i][j] = min(d[i][j], d[i][k] + d[k][j]);"
+      },
+      "problems": [
+        {
+          "title": "Find the City with the Smallest Number of Neighbors at a Threshold Distance",
+          "url": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/"
+        },
+        {
+          "title": "Path with Maximum Probability",
+          "url": "https://leetcode.com/problems/path-with-maximum-probability/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d852"
+    },
+    {
+      "title": "086. Minimum Spanning Tree",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/086.mp4",
+      "duration": 40,
+      "notes": "An MST connects all nodes with minimum total weight.\nKruskal: sort edges, add if it joins different components (DSU).\nPrim: grow from a node with a min-heap.\nV-1 edges are chosen.",
+      "logic": {
+        "problem": "Connect all cities with minimum cable.",
+        "thinking": "Take cheap edges that do not form a cycle.",
+        "pattern": "Greedy + DSU",
+        "logic": "Kruskal's algorithm.",
+        "approach": "1. Sort the edges.\n2. For each edge, if find(u) != find(v), unite.\n3. Add the weight.",
+        "code": "sort(edges.begin(), edges.end());\nfor (auto& [w, u, v] : edges) if (unite(u, v)) total += w;"
+      },
+      "problems": [
+        {
+          "title": "Min Cost to Connect All Points",
+          "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/"
+        },
+        {
+          "title": "Find Critical and Pseudo Critical Edges in Minimum Spanning Tree",
+          "url": "https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d853"
+    },
+    {
+      "title": "087. Disjoint Set Union",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/087.mp4",
+      "duration": 40,
+      "notes": "find with path compression, union by size/rank.\nNear O(1) per operation.\nUse for connected groups, cycle detection in undirected graphs, Kruskal.\nAccounts merge, grouping problems.",
+      "logic": {
+        "problem": "Are two nodes connected?",
+        "thinking": "Groups merge over time.",
+        "pattern": "DSU",
+        "logic": "Each group has one representative.",
+        "approach": "1. parent[i] = i.\n2. find compresses the path.\n3. unite attaches the smaller to the bigger.",
+        "code": "int find(int x) { return p[x] == x ? x : p[x] = find(p[x]); }\nbool unite(int a, int b) {\n  a = find(a); b = find(b);\n  if (a == b) return false;\n  if (sz[a] < sz[b]) swap(a, b);\n  p[b] = a; sz[a] += sz[b]; return true;\n}"
+      },
+      "problems": [
+        {
+          "title": "Accounts Merge",
+          "url": "https://leetcode.com/problems/accounts-merge/"
+        },
+        {
+          "title": "Most Stones Removed with Same Row Or Column",
+          "url": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d854"
+    },
+    {
+      "title": "088. DP Introduction",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/088.mp4",
+      "duration": 40,
+      "notes": "DP = recursion + remembering answers.\nOverlapping subproblems and optimal substructure.\nTop-down (memoisation) vs bottom-up (tabulation).\nSteps: state, transition, base case, order, answer.",
+      "logic": {
+        "problem": "Count ways to climb n stairs.",
+        "thinking": "The last move came from step n-1 or n-2.",
+        "pattern": "DP",
+        "logic": "ways(n) = ways(n-1) + ways(n-2).",
+        "approach": "1. dp[0] = dp[1] = 1.\n2. Fill left to right.\n3. The answer is dp[n].",
+        "code": "vector<long long> dp(n + 1, 1);\nfor (int i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];"
+      },
+      "problems": [
+        {
+          "title": "Climbing Stairs",
+          "url": "https://leetcode.com/problems/climbing-stairs/"
+        },
+        {
+          "title": "Min Cost Climbing Stairs",
+          "url": "https://leetcode.com/problems/min-cost-climbing-stairs/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d855"
+    },
+    {
+      "title": "089. 1D DP",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/089.mp4",
+      "duration": 40,
+      "notes": "The state depends on a few earlier states.\nHouse robber: take or skip.\nDecode ways: one or two characters.\nSpace-optimise to O(1) with two variables.",
+      "logic": {
+        "problem": "Maximum money without robbing neighbours.",
+        "thinking": "At each house: rob it or skip it.",
+        "pattern": "Take / skip DP",
+        "logic": "dp[i] = max(dp[i-1], dp[i-2] + a[i]).",
+        "approach": "1. Handle small n.\n2. Fill dp.\n3. Return dp[n-1].",
+        "code": "int prev2 = 0, prev1 = 0;\nfor (int x : a) { int cur = max(prev1, prev2 + x); prev2 = prev1; prev1 = cur; }"
+      },
+      "problems": [
+        {
+          "title": "House Robber",
+          "url": "https://leetcode.com/problems/house-robber/"
+        },
+        {
+          "title": "House Robber II",
+          "url": "https://leetcode.com/problems/house-robber-ii/"
+        },
+        {
+          "title": "Decode Ways",
+          "url": "https://leetcode.com/problems/decode-ways/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d856"
+    },
+    {
+      "title": "090. 0/1 Knapsack",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/090.mp4",
+      "duration": 45,
+      "notes": "Each item is used at most once.\ndp[i][w] = max(skip, take).\n1D version: loop w from high to low.\nSubset sum, partition and target sum use the same idea.",
+      "logic": {
+        "problem": "Pick items to maximise value within capacity W.",
+        "thinking": "For each item there are two choices.",
+        "pattern": "0/1 Knapsack",
+        "logic": "dp[w] = max(dp[w], dp[w - wt] + val).",
+        "approach": "1. dp[0..W] = 0.\n2. For each item, loop w from W down to wt.\n3. The answer is dp[W].",
+        "code": "for (int i = 0; i < n; i++)\n  for (int w = W; w >= wt[i]; w--) dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);"
+      },
+      "problems": [
+        {
+          "title": "Partition Equal Subset Sum",
+          "url": "https://leetcode.com/problems/partition-equal-subset-sum/"
+        },
+        {
+          "title": "Target Sum",
+          "url": "https://leetcode.com/problems/target-sum/"
+        },
+        {
+          "title": "Last Stone Weight II",
+          "url": "https://leetcode.com/problems/last-stone-weight-ii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d857"
+    },
+    {
+      "title": "091. Unbounded Knapsack and Coin Change",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/091.mp4",
+      "duration": 40,
+      "notes": "Items can be reused: loop w from low to high.\nCoin change (min coins): dp[a] = 1 + min(dp[a - c]).\nCoin change II (ways): loop coins outside to count combinations.\nPerfect squares is the same pattern.",
+      "logic": {
+        "problem": "Minimum coins to make an amount.",
+        "thinking": "The best answer for a uses the best answer for a smaller amount.",
+        "pattern": "Unbounded DP",
+        "logic": "dp[a] = 1 + min(dp[a - c]).",
+        "approach": "1. dp[0] = 0, others INF.\n2. Fill from 1 to amount.\n3. Return -1 if INF.",
+        "code": "vector<int> dp(amt + 1, INT_MAX); dp[0] = 0;\nfor (int a = 1; a <= amt; a++)\n  for (int c : coins) if (a >= c && dp[a - c] != INT_MAX) dp[a] = min(dp[a], dp[a - c] + 1);"
+      },
+      "problems": [
+        {
+          "title": "Coin Change",
+          "url": "https://leetcode.com/problems/coin-change/"
+        },
+        {
+          "title": "Coin Change II",
+          "url": "https://leetcode.com/problems/coin-change-ii/"
+        },
+        {
+          "title": "Perfect Squares",
+          "url": "https://leetcode.com/problems/perfect-squares/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d858"
+    },
+    {
+      "title": "092. LCS and String DP",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/092.mp4",
+      "duration": 45,
+      "notes": "LCS: if letters match, 1 + diagonal; else max(up, left).\nEdit distance: insert, delete, replace.\nLongest palindromic subsequence = LCS(s, reverse(s)).\n2D table; roll rows to save space.",
+      "logic": {
+        "problem": "Longest common subsequence of two strings.",
+        "thinking": "Compare the last letters of both strings.",
+        "pattern": "2D DP",
+        "logic": "Match → diagonal + 1; else the best of two.",
+        "approach": "1. dp[0][*] = dp[*][0] = 0.\n2. Fill row by row.\n3. The answer is dp[n][m].",
+        "code": "for (int i = 1; i <= n; i++)\n  for (int j = 1; j <= m; j++)\n    dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : max(dp[i - 1][j], dp[i][j - 1]);"
+      },
+      "problems": [
+        {
+          "title": "Longest Common Subsequence",
+          "url": "https://leetcode.com/problems/longest-common-subsequence/"
+        },
+        {
+          "title": "Edit Distance",
+          "url": "https://leetcode.com/problems/edit-distance/"
+        },
+        {
+          "title": "Longest Palindromic Subsequence",
+          "url": "https://leetcode.com/problems/longest-palindromic-subsequence/"
+        },
+        {
+          "title": "Distinct Subsequences",
+          "url": "https://leetcode.com/problems/distinct-subsequences/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d859"
+    },
+    {
+      "title": "093. Longest Increasing Subsequence",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/093.mp4",
+      "duration": 40,
+      "notes": "O(n^2) DP: dp[i] = 1 + max(dp[j]) for a[j] < a[i].\nO(n log n): keep the smallest tail for each length with lower_bound.\nRussian doll envelopes: sort, then LIS.\nCounting LIS needs an extra counter.",
+      "logic": {
+        "problem": "Length of the longest increasing subsequence.",
+        "thinking": "A smaller tail allows longer extensions.",
+        "pattern": "Patience sorting",
+        "logic": "Replace the first tail ≥ x.",
+        "approach": "1. tails = empty.\n2. lower_bound for x.\n3. Replace or append.",
+        "code": "vector<int> t;\nfor (int x : a) {\n  auto it = lower_bound(t.begin(), t.end(), x);\n  if (it == t.end()) t.push_back(x); else *it = x;\n}"
+      },
+      "problems": [
+        {
+          "title": "Longest Increasing Subsequence",
+          "url": "https://leetcode.com/problems/longest-increasing-subsequence/"
+        },
+        {
+          "title": "Number of Longest Increasing Subsequence",
+          "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/"
+        },
+        {
+          "title": "Russian Doll Envelopes",
+          "url": "https://leetcode.com/problems/russian-doll-envelopes/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d85a"
+    },
+    {
+      "title": "094. Grid DP",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/094.mp4",
+      "duration": 35,
+      "notes": "dp[i][j] depends on up and left.\nUnique paths, minimum path sum, maximal square, triangle.\nHandle obstacles and borders.\nRolling row for O(cols) space.",
+      "logic": {
+        "problem": "Count paths from top-left to bottom-right.",
+        "thinking": "You can arrive only from the top or from the left.",
+        "pattern": "Grid DP",
+        "logic": "dp[i][j] = dp[i-1][j] + dp[i][j-1].",
+        "approach": "1. First row and column = 1.\n2. Fill the rest.\n3. The answer is bottom-right.",
+        "code": "for (int i = 1; i < m; i++)\n  for (int j = 1; j < n; j++) dp[i][j] = dp[i - 1][j] + dp[i][j - 1];"
+      },
+      "problems": [
+        {
+          "title": "Unique Paths",
+          "url": "https://leetcode.com/problems/unique-paths/"
+        },
+        {
+          "title": "Minimum Path Sum",
+          "url": "https://leetcode.com/problems/minimum-path-sum/"
+        },
+        {
+          "title": "Maximal Square",
+          "url": "https://leetcode.com/problems/maximal-square/"
+        },
+        {
+          "title": "Triangle",
+          "url": "https://leetcode.com/problems/triangle/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d85b"
+    },
+    {
+      "title": "095. Advanced DP: Bitmask and Trees",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/095.mp4",
+      "duration": 50,
+      "notes": "Bitmask DP: the mask stores which items are used; n ≤ 20.\nTree DP: combine child answers (house robber III).\nState = (node, taken or not).\nWrite the state clearly before coding.",
+      "logic": {
+        "problem": "Rob houses arranged as a tree.",
+        "thinking": "Robbing a node blocks its children.",
+        "pattern": "Tree DP",
+        "logic": "Return a pair (take, skip) from each node.",
+        "approach": "1. Get pairs from the children.\n2. take = val + skip of children.\n3. skip = best of children.",
+        "code": "pair<int,int> go(TreeNode* n) {\n  if (!n) return {0, 0};\n  auto l = go(n->left), r = go(n->right);\n  return {n->val + l.second + r.second, max(l.first, l.second) + max(r.first, r.second)};\n}"
+      },
+      "problems": [
+        {
+          "title": "Shortest Path Visiting All Nodes",
+          "url": "https://leetcode.com/problems/shortest-path-visiting-all-nodes/"
+        },
+        {
+          "title": "Partition to K Equal Sum Subsets",
+          "url": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/"
+        },
+        {
+          "title": "House Robber III",
+          "url": "https://leetcode.com/problems/house-robber-iii/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d85c"
+    },
+    {
+      "title": "096. Greedy and Intervals",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/096.mp4",
+      "duration": 40,
+      "notes": "Greedy: a local best choice that is provably safe.\nSort first, then scan.\nIntervals: sort by start (merge) or by end (maximum non-overlapping).\nIf you cannot prove it, test against brute force.",
+      "logic": {
+        "problem": "Maximum number of non-overlapping intervals.",
+        "thinking": "Finishing early leaves the most room.",
+        "pattern": "Greedy by end time",
+        "logic": "Always keep the interval that ends first.",
+        "approach": "1. Sort by end.\n2. Take it if start ≥ last end.\n3. Count.",
+        "code": "sort(v.begin(), v.end(), [](auto& a, auto& b) { return a[1] < b[1]; });\nint last = INT_MIN, cnt = 0;\nfor (auto& x : v) if (x[0] >= last) { cnt++; last = x[1]; }"
+      },
+      "problems": [
+        {
+          "title": "Jump Game",
+          "url": "https://leetcode.com/problems/jump-game/"
+        },
+        {
+          "title": "Jump Game II",
+          "url": "https://leetcode.com/problems/jump-game-ii/"
+        },
+        {
+          "title": "Non Overlapping Intervals",
+          "url": "https://leetcode.com/problems/non-overlapping-intervals/"
+        },
+        {
+          "title": "Minimum Number of Arrows to Burst Balloons",
+          "url": "https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/"
+        },
+        {
+          "title": "Gas Station",
+          "url": "https://leetcode.com/problems/gas-station/"
+        },
+        {
+          "title": "Insert Interval",
+          "url": "https://leetcode.com/problems/insert-interval/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d85d"
+    },
+    {
+      "title": "097. Bit Manipulation",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/097.mp4",
+      "duration": 35,
+      "notes": "& | ^ ~ << >>\nCheck bit i: (n >> i) & 1. Set: n | (1 << i). Clear: n & ~(1 << i).\nn & (n - 1) removes the lowest set bit.\nXOR cancels pairs: a ^ a = 0.\n__builtin_popcount counts set bits.",
+      "logic": {
+        "problem": "Find the number that appears once.",
+        "thinking": "Pairs cancel under XOR.",
+        "pattern": "XOR trick",
+        "logic": "XOR everything.",
+        "approach": "1. ans = 0.\n2. ans ^= x for each x.\n3. Return ans.",
+        "code": "int ans = 0;\nfor (int x : a) ans ^= x;"
+      },
+      "problems": [
+        {
+          "title": "Single Number",
+          "url": "https://leetcode.com/problems/single-number/"
+        },
+        {
+          "title": "Number of 1 Bits",
+          "url": "https://leetcode.com/problems/number-of-1-bits/"
+        },
+        {
+          "title": "Counting Bits",
+          "url": "https://leetcode.com/problems/counting-bits/"
+        },
+        {
+          "title": "Missing Number",
+          "url": "https://leetcode.com/problems/missing-number/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d85e"
+    },
+    {
+      "title": "098. Math and Number Theory",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/098.mp4",
+      "duration": 40,
+      "notes": "gcd(a, b) = gcd(b, a % b); std::gcd in C++17.\nSieve of Eratosthenes: O(n log log n).\nFast power with modulo; mod = 1e9 + 7.\nRemember (a * b) % m needs long long.",
+      "logic": {
+        "problem": "Compute a^b mod m fast.",
+        "thinking": "Repeated squaring halves the exponent.",
+        "pattern": "Binary exponentiation",
+        "logic": "If b is odd, multiply the answer once.",
+        "approach": "1. res = 1.\n2. If b is odd, res = res * a % m.\n3. a = a * a % m; b >>= 1.",
+        "code": "long long modpow(long long a, long long b, long long m) {\n  long long r = 1; a %= m;\n  for (; b; b >>= 1, a = a * a % m) if (b & 1) r = r * a % m;\n  return r;\n}"
+      },
+      "problems": [
+        {
+          "title": "Factorial Trailing Zeroes",
+          "url": "https://leetcode.com/problems/factorial-trailing-zeroes/"
+        },
+        {
+          "title": "Ugly Number",
+          "url": "https://leetcode.com/problems/ugly-number/"
+        },
+        {
+          "title": "Excel Sheet Column Number",
+          "url": "https://leetcode.com/problems/excel-sheet-column-number/"
+        },
+        {
+          "title": "Super Pow",
+          "url": "https://leetcode.com/problems/super-pow/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d85f"
+    },
+    {
+      "title": "099. Choosing the Right Pattern",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/099.mp4",
+      "duration": 35,
+      "notes": "Sorted array / pair → two pointers or binary search.\nSubarray or substring → sliding window or prefix sum.\nNext greater → monotonic stack.\nShortest path → BFS or Dijkstra.\nAll possibilities → backtracking.\nOverlapping subproblems → DP.\nTop K → heap.",
+      "logic": {
+        "problem": "Which technique does this problem need?",
+        "thinking": "Clues in the statement point to the pattern.",
+        "pattern": "Pattern recognition",
+        "logic": "Read the constraints and the wording.",
+        "approach": "1. Restate the problem.\n2. Match clues to a pattern.\n3. State the complexity, then code."
+      },
+      "problems": [
+        {
+          "title": "Product of Array Except Self",
+          "url": "https://leetcode.com/problems/product-of-array-except-self/"
+        },
+        {
+          "title": "Find the Duplicate Number",
+          "url": "https://leetcode.com/problems/find-the-duplicate-number/"
+        },
+        {
+          "title": "Trapping Rain Water",
+          "url": "https://leetcode.com/problems/trapping-rain-water/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d860"
+    },
+    {
+      "title": "100. Final Roadmap and Contest Template",
+      "videoUrl": "https://YOUR-CDN.com/dsa-cpp/100.mp4",
+      "duration": 30,
+      "notes": "Practice plan: 1 topic per week, 5 easy, 5 medium, 1 hard.\nAlways: restate, brute force, optimise, test, state complexity.\nKeep a template with fast I/O and common macros.\nRevise your mistakes notebook weekly.",
+      "logic": {
+        "problem": "Where do I go from here?",
+        "thinking": "Consistent practice beats long rare sessions.",
+        "pattern": "Deliberate practice",
+        "logic": "Review mistakes and re-solve after a week.",
+        "approach": "1. Pick a topic.\n2. Solve, then review.\n3. Re-solve after 7 days.",
+        "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  ios::sync_with_stdio(false); cin.tie(nullptr);\n  // solve here\n}"
+      },
+      "problems": [
+        {
+          "title": "Median of Two Sorted Arrays",
+          "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/"
+        },
+        {
+          "title": "Word Break",
+          "url": "https://leetcode.com/problems/word-break/"
+        },
+        {
+          "title": "LFU Cache",
+          "url": "https://leetcode.com/problems/lfu-cache/"
+        }
+      ],
+      "id": "6ae87929beb6454fb390d861"
+    }
+  ]
+}

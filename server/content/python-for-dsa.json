@@ -1,0 +1,630 @@
+{
+  "title": "Python for DSA",
+  "instructor": "Alpha Coding School Team",
+  "level": "Basic → Advanced",
+  "price": 999,
+  "featured": false,
+  "description": "Learn Python with only what you need for Data Structures and Algorithms: from syntax to heaps, graphs and dynamic programming.",
+  "includes": [
+    "Videos",
+    "Notes",
+    "Logic",
+    "Live Classes",
+    "Practice"
+  ],
+  "lessons": [
+    {
+      "title": "01. Python Setup and First Program",
+      "videoUrl": "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp",
+      "duration": 15,
+      "notes": "Check your install: python3 --version\nRun a file: python3 main.py\nIndentation is part of the syntax (4 spaces).\nComments start with #.",
+      "problems": [],
+      "id": "6ae8787286a4d1c8e9a36dd9"
+    },
+    {
+      "title": "02. Variables, Types and Operators",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 20,
+      "notes": "int has no overflow. float is approximate.\n// floor divide, % remainder, ** power, divmod(a, b)\nSwap: a, b = b, a\nNone means 'no value'.",
+      "problems": [
+        {
+          "title": "Reverse Integer",
+          "url": "https://leetcode.com/problems/reverse-integer/"
+        },
+        {
+          "title": "Palindrome Number",
+          "url": "https://leetcode.com/problems/palindrome-number/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36dda"
+    },
+    {
+      "title": "03. Input, Output and Fast I/O",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 15,
+      "notes": "n = int(input())\narr = list(map(int, input().split()))\nFaster: import sys; input = sys.stdin.readline\nPrint many values once: print(' '.join(map(str, arr)))",
+      "problems": [],
+      "id": "6ae8787286a4d1c8e9a36ddb"
+    },
+    {
+      "title": "04. Conditionals and Loops",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 20,
+      "notes": "if / elif / else\nfor i in range(start, stop, step)\nwhile, break, continue\nfor i, x in enumerate(arr)\nloop-else runs when no break happened.",
+      "problems": [
+        {
+          "title": "Fizz Buzz",
+          "url": "https://leetcode.com/problems/fizz-buzz/"
+        },
+        {
+          "title": "Count Primes",
+          "url": "https://leetcode.com/problems/count-primes/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36ddc"
+    },
+    {
+      "title": "05. Functions and Scope",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 20,
+      "notes": "def, return (can return several values as a tuple)\n*args, **kwargs, default values\nlambda for tiny functions\nnonlocal / global change outer variables.\nPitfall: never use def f(a=[]). Use None and create the list inside.",
+      "problems": [
+        {
+          "title": "Power of Two",
+          "url": "https://leetcode.com/problems/power-of-two/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36ddd"
+    },
+    {
+      "title": "06. Strings",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 25,
+      "notes": "Strings are immutable.\nSlicing: s[::-1] reverses.\nsplit, join, strip, ord, chr, f-strings.\nBuild text with a list and ''.join(parts). Repeated += is O(n^2).",
+      "problems": [
+        {
+          "title": "Valid Palindrome",
+          "url": "https://leetcode.com/problems/valid-palindrome/"
+        },
+        {
+          "title": "Reverse String",
+          "url": "https://leetcode.com/problems/reverse-string/"
+        },
+        {
+          "title": "Valid Anagram",
+          "url": "https://leetcode.com/problems/valid-anagram/"
+        }
+      ],
+      "logic": {
+        "problem": "Check if two words are anagrams.",
+        "thinking": "Same letters, same counts, any order.",
+        "pattern": "Frequency count",
+        "logic": "Equal counts means anagram.",
+        "approach": "1. Count letters of both.\n2. Compare the counts.",
+        "code": "from collections import Counter\nreturn Counter(a) == Counter(b)"
+      },
+      "id": "6ae8787286a4d1c8e9a36dde"
+    },
+    {
+      "title": "07. Lists as Arrays",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "append and pop() are O(1). insert(0, x) and pop(0) are O(n).\nSlicing copies: arr[a:b] costs O(b-a).\n2D grid: [[0]*n for _ in range(m)]. Never [[0]*n]*m.",
+      "problems": [
+        {
+          "title": "Best Time to Buy and Sell Stock",
+          "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
+        },
+        {
+          "title": "Rotate Array",
+          "url": "https://leetcode.com/problems/rotate-array/"
+        },
+        {
+          "title": "Move Zeroes",
+          "url": "https://leetcode.com/problems/move-zeroes/"
+        }
+      ],
+      "logic": {
+        "problem": "Find two numbers in a sorted list that add to a target.",
+        "thinking": "Brute force checks every pair. Sorting gives us direction.",
+        "pattern": "Two Pointers",
+        "logic": "Too small: move left up. Too big: move right down.",
+        "approach": "1. l=0, r=n-1.\n2. Compare sum with target.\n3. Move one pointer.",
+        "code": "l, r = 0, len(a) - 1\nwhile l < r:\n    s = a[l] + a[r]\n    if s == t: return [l, r]\n    l, r = (l + 1, r) if s < t else (l, r - 1)"
+      },
+      "id": "6ae8787286a4d1c8e9a36ddf"
+    },
+    {
+      "title": "08. Tuples and Sets",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 20,
+      "notes": "Tuples are fixed and hashable (can be dict keys).\nSets hold unique items. Membership check is O(1) average.\n| union, & intersection, - difference.",
+      "problems": [
+        {
+          "title": "Contains Duplicate",
+          "url": "https://leetcode.com/problems/contains-duplicate/"
+        },
+        {
+          "title": "Intersection of Two Arrays",
+          "url": "https://leetcode.com/problems/intersection-of-two-arrays/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36de0"
+    },
+    {
+      "title": "09. Dictionaries and Hash Maps",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "d[key] = value, d.get(key, default)\nAverage O(1) insert, lookup, delete.\nCounter counts items. defaultdict(list) groups items.\nKeys must be hashable (no lists).",
+      "problems": [
+        {
+          "title": "Two Sum",
+          "url": "https://leetcode.com/problems/two-sum/"
+        },
+        {
+          "title": "Group Anagrams",
+          "url": "https://leetcode.com/problems/group-anagrams/"
+        },
+        {
+          "title": "Top K Frequent Elements",
+          "url": "https://leetcode.com/problems/top-k-frequent-elements/"
+        }
+      ],
+      "logic": {
+        "problem": "Find two indexes whose values add to a target (unsorted).",
+        "thinking": "For each number, I only need to know if its partner was seen before.",
+        "pattern": "Hash Map lookup",
+        "logic": "partner = target - x. Ask the dict instead of searching.",
+        "approach": "1. Walk the list.\n2. If partner in seen, answer.\n3. Else store x.",
+        "code": "seen = {}\nfor i, x in enumerate(a):\n    if t - x in seen: return [seen[t - x], i]\n    seen[x] = i"
+      },
+      "id": "6ae8787286a4d1c8e9a36de1"
+    },
+    {
+      "title": "10. Comprehensions and Built-ins",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 20,
+      "notes": "[x*x for x in a if x > 0]\n{k: v for ...} and {x for ...}\nzip, map, filter, any, all, sum, min, max, sorted\nGenerator expression: sum(x for x in a) uses no extra list.",
+      "problems": [
+        {
+          "title": "Squares of a Sorted Array",
+          "url": "https://leetcode.com/problems/squares-of-a-sorted-array/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36de2"
+    },
+    {
+      "title": "11. Sorting and Custom Keys",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 25,
+      "notes": "sorted(a) returns a new list. a.sort() sorts in place.\nkey=lambda x: (x[0], -x[1])\nSort is stable and O(n log n).\nfunctools.cmp_to_key for custom compare.",
+      "problems": [
+        {
+          "title": "Merge Intervals",
+          "url": "https://leetcode.com/problems/merge-intervals/"
+        },
+        {
+          "title": "Sort Colors",
+          "url": "https://leetcode.com/problems/sort-colors/"
+        },
+        {
+          "title": "Largest Number",
+          "url": "https://leetcode.com/problems/largest-number/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36de3"
+    },
+    {
+      "title": "12. Recursion and the Call Stack",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "Every recursion needs a base case and a smaller step.\nPython default depth is about 1000. sys.setrecursionlimit(10**6) raises it, but deep recursion can still crash.\nPython does not optimise tail calls.",
+      "problems": [
+        {
+          "title": "Fibonacci Number",
+          "url": "https://leetcode.com/problems/fibonacci-number/"
+        },
+        {
+          "title": "Pow(x, n)",
+          "url": "https://leetcode.com/problems/powx-n/"
+        },
+        {
+          "title": "Subsets",
+          "url": "https://leetcode.com/problems/subsets/"
+        }
+      ],
+      "logic": {
+        "problem": "Compute 2^n quickly.",
+        "thinking": "2^n is 2^(n/2) squared. The problem halves each time.",
+        "pattern": "Divide and conquer",
+        "logic": "Solve half, then combine.",
+        "approach": "1. Base: n == 0 gives 1.\n2. half = f(n // 2).\n3. Square it, times x if n is odd.",
+        "code": "def pw(x, n):\n    if n == 0: return 1\n    h = pw(x, n // 2)\n    return h * h * (x if n % 2 else 1)"
+      },
+      "id": "6ae8787286a4d1c8e9a36de4"
+    },
+    {
+      "title": "13. Classes for DSA",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 20,
+      "notes": "class Node:\n    def __init__(self, val, next=None): ...\n__repr__ helps debugging. __lt__ lets objects sit in a heap.\n@dataclass removes boilerplate.",
+      "problems": [],
+      "id": "6ae8787286a4d1c8e9a36de5"
+    },
+    {
+      "title": "14. Time and Space Complexity in Python",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "list: index O(1), append O(1), insert/pop(0) O(n), x in list O(n)\ndict/set: add, lookup, delete O(1) average\ndeque: both ends O(1)\nstr: slicing and += cost O(n)\nsorted: O(n log n)",
+      "problems": [],
+      "logic": {
+        "problem": "Which structure should I use?",
+        "thinking": "List the operations you do most, then pick the structure where those are cheap.",
+        "pattern": "Match operation to structure",
+        "logic": "Lookup: set/dict. Both ends: deque. Order/priority: heap.",
+        "approach": "1. Write the operations.\n2. Check the cost table.\n3. Pick the cheapest fit.",
+        "code": "# 'x in list' is O(n); 'x in set' is O(1)"
+      },
+      "id": "6ae8787286a4d1c8e9a36de6"
+    },
+    {
+      "title": "15. collections: deque, Counter, defaultdict",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 25,
+      "notes": "from collections import deque, Counter, defaultdict\ndq.append, dq.appendleft, dq.pop, dq.popleft\nCounter(a).most_common(k)\ndefaultdict(int) never raises KeyError.",
+      "problems": [
+        {
+          "title": "Sliding Window Maximum",
+          "url": "https://leetcode.com/problems/sliding-window-maximum/"
+        },
+        {
+          "title": "Number of Recent Calls",
+          "url": "https://leetcode.com/problems/number-of-recent-calls/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36de7"
+    },
+    {
+      "title": "16. heapq and bisect",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "heapq is a min-heap on a list.\nheappush, heappop, heapify, nlargest, nsmallest\nMax-heap: push negative values.\nbisect_left / bisect_right find positions in a sorted list in O(log n).",
+      "problems": [
+        {
+          "title": "Kth Largest Element in an Array",
+          "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/"
+        },
+        {
+          "title": "Search Insert Position",
+          "url": "https://leetcode.com/problems/search-insert-position/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36de8"
+    },
+    {
+      "title": "17. itertools and functools",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 25,
+      "notes": "permutations, combinations, product, accumulate\n@lru_cache(None) or @cache memoises a function.\nreduce folds a list to one value.",
+      "problems": [
+        {
+          "title": "Permutations",
+          "url": "https://leetcode.com/problems/permutations/"
+        },
+        {
+          "title": "Combinations",
+          "url": "https://leetcode.com/problems/combinations/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36de9"
+    },
+    {
+      "title": "18. Two Pointers and Sliding Window",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 40,
+      "notes": "Two pointers: sorted data or in-place changes.\nSliding window: a continuous range that grows on the right and shrinks on the left.",
+      "problems": [
+        {
+          "title": "Longest Substring Without Repeating Characters",
+          "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+        },
+        {
+          "title": "Container With Most Water",
+          "url": "https://leetcode.com/problems/container-with-most-water/"
+        },
+        {
+          "title": "Minimum Size Subarray Sum",
+          "url": "https://leetcode.com/problems/minimum-size-subarray-sum/"
+        }
+      ],
+      "logic": {
+        "problem": "Longest substring with no repeated letter.",
+        "thinking": "Brute force checks every substring. Neighbouring substrings share most letters.",
+        "pattern": "Sliding Window (variable size)",
+        "logic": "Grow right. If invalid, shrink left until valid again.",
+        "approach": "1. Move r, add the letter.\n2. While repeated, move l.\n3. Track max length.",
+        "code": "seen, l, best = set(), 0, 0\nfor r, ch in enumerate(s):\n    while ch in seen:\n        seen.remove(s[l]); l += 1\n    seen.add(ch)\n    best = max(best, r - l + 1)"
+      },
+      "id": "6ae8787286a4d1c8e9a36dea"
+    },
+    {
+      "title": "19. Linked Lists",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 35,
+      "notes": "A node holds a value and a pointer.\nDummy head avoids special cases.\nReverse: keep prev and curr.\nFast and slow pointers find the middle or a cycle.",
+      "problems": [
+        {
+          "title": "Reverse Linked List",
+          "url": "https://leetcode.com/problems/reverse-linked-list/"
+        },
+        {
+          "title": "Linked List Cycle",
+          "url": "https://leetcode.com/problems/linked-list-cycle/"
+        },
+        {
+          "title": "Merge Two Sorted Lists",
+          "url": "https://leetcode.com/problems/merge-two-sorted-lists/"
+        }
+      ],
+      "logic": {
+        "problem": "Reverse a linked list.",
+        "thinking": "Each node must point backwards instead of forwards.",
+        "pattern": "Pointer rewiring",
+        "logic": "Remember next before you overwrite it.",
+        "approach": "1. prev = None.\n2. nxt = cur.next.\n3. cur.next = prev, then move both.",
+        "code": "prev = None\nwhile cur:\n    nxt = cur.next\n    cur.next = prev\n    prev, cur = cur, nxt\nreturn prev"
+      },
+      "id": "6ae8787286a4d1c8e9a36deb"
+    },
+    {
+      "title": "20. Stacks and Queues",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "Stack: a list with append and pop.\nQueue: deque with append and popleft. Never use list.pop(0).\nMonotonic stack finds the next greater item.",
+      "problems": [
+        {
+          "title": "Valid Parentheses",
+          "url": "https://leetcode.com/problems/valid-parentheses/"
+        },
+        {
+          "title": "Daily Temperatures",
+          "url": "https://leetcode.com/problems/daily-temperatures/"
+        },
+        {
+          "title": "Min Stack",
+          "url": "https://leetcode.com/problems/min-stack/"
+        }
+      ],
+      "logic": {
+        "problem": "Check if brackets are balanced.",
+        "thinking": "The most recent opening bracket must close first.",
+        "pattern": "Stack (last in, first out)",
+        "logic": "A closer must match the top of the stack.",
+        "approach": "1. Push openers.\n2. On a closer, pop and compare.\n3. Stack must end empty.",
+        "code": "pair = {')': '(', ']': '[', '}': '{'}\nst = []\nfor ch in s:\n    if ch in pair:\n        if not st or st.pop() != pair[ch]: return False\n    else: st.append(ch)\nreturn not st"
+      },
+      "id": "6ae8787286a4d1c8e9a36dec"
+    },
+    {
+      "title": "21. Binary Search",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 35,
+      "notes": "Needs sorted or monotonic data. O(log n).\nTemplate: lo, hi, mid = (lo + hi) // 2\nSearch on answer: binary search over possible results.",
+      "problems": [
+        {
+          "title": "Binary Search",
+          "url": "https://leetcode.com/problems/binary-search/"
+        },
+        {
+          "title": "Search in Rotated Sorted Array",
+          "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/"
+        },
+        {
+          "title": "Koko Eating Bananas",
+          "url": "https://leetcode.com/problems/koko-eating-bananas/"
+        }
+      ],
+      "logic": {
+        "problem": "Find the smallest speed that finishes in time.",
+        "thinking": "Bigger speed never hurts, so answers go no, no, yes, yes.",
+        "pattern": "Binary Search on Answer",
+        "logic": "If mid works, try smaller. Else try bigger.",
+        "approach": "1. Set lo and hi.\n2. Test mid.\n3. Shrink the side.",
+        "code": "lo, hi = 1, max(piles)\nwhile lo < hi:\n    mid = (lo + hi) // 2\n    if can_finish(mid): hi = mid\n    else: lo = mid + 1\nreturn lo"
+      },
+      "id": "6ae8787286a4d1c8e9a36ded"
+    },
+    {
+      "title": "22. Trees and Traversals",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 40,
+      "notes": "class TreeNode: val, left, right\nDFS: preorder, inorder, postorder (recursion)\nBFS: level order with deque\nInorder of a BST is sorted.",
+      "problems": [
+        {
+          "title": "Maximum Depth of Binary Tree",
+          "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+        },
+        {
+          "title": "Binary Tree Level Order Traversal",
+          "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+        },
+        {
+          "title": "Validate Binary Search Tree",
+          "url": "https://leetcode.com/problems/validate-binary-search-tree/"
+        }
+      ],
+      "logic": {
+        "problem": "Height of a binary tree.",
+        "thinking": "A tree's height depends on the heights of its two subtrees.",
+        "pattern": "Tree recursion",
+        "logic": "answer = 1 + max(left, right)",
+        "approach": "1. Empty tree is 0.\n2. Ask both children.\n3. Take the larger plus 1.",
+        "code": "def h(n):\n    return 0 if not n else 1 + max(h(n.left), h(n.right))"
+      },
+      "id": "6ae8787286a4d1c8e9a36dee"
+    },
+    {
+      "title": "23. Graphs: BFS and DFS",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 45,
+      "notes": "Adjacency list: g = defaultdict(list)\nUse a visited set.\nBFS (deque) gives shortest steps in an unweighted graph.\nGrid moves: for dx, dy in ((1,0),(-1,0),(0,1),(0,-1)).",
+      "problems": [
+        {
+          "title": "Number of Islands",
+          "url": "https://leetcode.com/problems/number-of-islands/"
+        },
+        {
+          "title": "Clone Graph",
+          "url": "https://leetcode.com/problems/clone-graph/"
+        },
+        {
+          "title": "Course Schedule",
+          "url": "https://leetcode.com/problems/course-schedule/"
+        }
+      ],
+      "logic": {
+        "problem": "Count islands in a grid.",
+        "thinking": "Each island is one connected group of land cells.",
+        "pattern": "Flood fill (DFS/BFS)",
+        "logic": "Visit a land cell, then sink everything connected to it.",
+        "approach": "1. Scan cells.\n2. On land, count +1 and flood.\n3. Flood marks cells visited.",
+        "code": "def dfs(r, c):\n    if not (0 <= r < R and 0 <= c < C) or g[r][c] != '1': return\n    g[r][c] = '0'\n    for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)): dfs(r + dr, c + dc)"
+      },
+      "id": "6ae8787286a4d1c8e9a36def"
+    },
+    {
+      "title": "24. Shortest Paths and Union Find",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 40,
+      "notes": "Dijkstra: heap of (distance, node), for non-negative weights.\nUnion Find (DSU): find with path compression, union by size.\nUse DSU for connected groups and cycle checks.",
+      "problems": [
+        {
+          "title": "Network Delay Time",
+          "url": "https://leetcode.com/problems/network-delay-time/"
+        },
+        {
+          "title": "Number of Provinces",
+          "url": "https://leetcode.com/problems/number-of-provinces/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36df0"
+    },
+    {
+      "title": "25. Backtracking",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 40,
+      "notes": "Choose, explore, un-choose.\nSave a copy of the path: res.append(path[:]).\nPrune early to save time.",
+      "problems": [
+        {
+          "title": "Subsets",
+          "url": "https://leetcode.com/problems/subsets/"
+        },
+        {
+          "title": "Combination Sum",
+          "url": "https://leetcode.com/problems/combination-sum/"
+        },
+        {
+          "title": "N-Queens",
+          "url": "https://leetcode.com/problems/n-queens/"
+        }
+      ],
+      "logic": {
+        "problem": "List all subsets of a list.",
+        "thinking": "For each item there are two choices: take it or skip it.",
+        "pattern": "Backtracking (decision tree)",
+        "logic": "Try a choice, recurse, then undo it.",
+        "approach": "1. At index i, add item.\n2. Recurse.\n3. Remove item, recurse again.",
+        "code": "def go(i):\n    if i == len(a): res.append(path[:]); return\n    path.append(a[i]); go(i + 1)\n    path.pop(); go(i + 1)"
+      },
+      "id": "6ae8787286a4d1c8e9a36df1"
+    },
+    {
+      "title": "26. Dynamic Programming in Python",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 50,
+      "notes": "Top-down: @lru_cache(None) on a recursive function.\nBottom-up: fill a list or 2D table.\nSpace trick: keep only the previous row.\nTop 5 to master: Fibonacci, Climbing Stairs, Coin Change, 0/1 Knapsack, LCS.",
+      "problems": [
+        {
+          "title": "Climbing Stairs",
+          "url": "https://leetcode.com/problems/climbing-stairs/"
+        },
+        {
+          "title": "Coin Change",
+          "url": "https://leetcode.com/problems/coin-change/"
+        },
+        {
+          "title": "Longest Common Subsequence",
+          "url": "https://leetcode.com/problems/longest-common-subsequence/"
+        },
+        {
+          "title": "Partition Equal Subset Sum",
+          "url": "https://leetcode.com/problems/partition-equal-subset-sum/"
+        }
+      ],
+      "logic": {
+        "problem": "Minimum coins to make an amount.",
+        "thinking": "The best answer for amount a uses the best answer for a smaller amount.",
+        "pattern": "DP: answer built from smaller answers",
+        "logic": "dp[a] = 1 + min(dp[a - coin])",
+        "approach": "1. dp[0] = 0, others infinity.\n2. Fill from 1 to amount.\n3. Answer is dp[amount] or -1.",
+        "code": "dp = [0] + [float('inf')] * amt\nfor a in range(1, amt + 1):\n    for c in coins:\n        if a >= c: dp[a] = min(dp[a], dp[a - c] + 1)\nreturn dp[amt] if dp[amt] != float('inf') else -1"
+      },
+      "id": "6ae8787286a4d1c8e9a36df2"
+    },
+    {
+      "title": "27. Greedy and Intervals",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "Greedy: take the best local choice, and be able to explain why it is safe.\nIntervals: sort by start, then merge or count overlaps.",
+      "problems": [
+        {
+          "title": "Jump Game",
+          "url": "https://leetcode.com/problems/jump-game/"
+        },
+        {
+          "title": "Meeting Rooms II",
+          "url": "https://leetcode.com/problems/meeting-rooms-ii/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36df3"
+    },
+    {
+      "title": "28. Bit Manipulation and Math",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 25,
+      "notes": "& | ^ ~ << >>\nx & (x - 1) clears the lowest set bit.\nXOR of equal numbers is 0.\npow(a, b, mod), math.gcd, mod 10**9 + 7.",
+      "problems": [
+        {
+          "title": "Single Number",
+          "url": "https://leetcode.com/problems/single-number/"
+        },
+        {
+          "title": "Number of 1 Bits",
+          "url": "https://leetcode.com/problems/number-of-1-bits/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36df4"
+    },
+    {
+      "title": "29. Tries",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "A trie stores words letter by letter.\nNode: children = {}, end = False\nInsert and search cost O(length of word).",
+      "problems": [
+        {
+          "title": "Implement Trie (Prefix Tree)",
+          "url": "https://leetcode.com/problems/implement-trie-prefix-tree/"
+        }
+      ],
+      "id": "6ae8787286a4d1c8e9a36df5"
+    },
+    {
+      "title": "30. Python Pitfalls and Interview Template",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "duration": 30,
+      "notes": "Mutable default arguments.\nShallow vs deep copy (copy.deepcopy).\nInteger division of negatives floors: -7 // 2 = -4.\nRecursion limit.\nTemplate: read input, name the pattern, state complexity, then code.",
+      "problems": [],
+      "id": "6ae8787286a4d1c8e9a36df6"
+    }
+  ]
+}
